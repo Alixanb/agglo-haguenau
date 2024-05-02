@@ -28,4 +28,4 @@ const P = React.forwardRef<
 });
 
 P.displayName = "P";
-export default P;
+export { P, paragraphVariants };

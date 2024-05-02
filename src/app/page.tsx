@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import "./globals.css";
 import ElemGrid from "@/components/widgets/ArticleGrid";
 import ArticleCard from "@/components/widgets/Article";
+import { H1, P, Small } from "@/components/typos";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -13,17 +14,10 @@ export default function Home() {
   return (
     <main className={cn(" ", inter.className)}>
       <div className="flex flex-col ">
-        <p
-          className={cn(
-            "text-sm font-medium leading-none slate text-slate-400 ",
-            inter.className
-          )}
-        >
-          Bienvenue, vous ête sur
-        </p>
-        <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
+        <Small className="text-slate-400">Bienvenue, vous ête sur</Small>
+        <H1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
           Agglomération
-        </h1>
+        </H1>
       </div>
       <div>
         {/* <ElemGrid>

@@ -2,7 +2,17 @@ import { cn } from "@/lib/utils";
 import { VariantProps } from "class-variance-authority";
 import React from "react";
 
-export const H1: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
+/**
+ * H1 Component
+ *
+ * Renders the main title of the page. There must be only one H1 component per page.
+ *
+ * @param className Additional CSS overload classes for the element.
+ * @param children The content to be rendered within the heading element.
+ * @param props Additional HTML attributes to be passed to the heading element.
+ * @returns JSX.Element or React.HTMLAttributes<HTMLHeadingElement>.
+ */
+const H1: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
   className,
   children,
   ...props
@@ -20,7 +30,17 @@ export const H1: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
   );
 };
 
-export const H2: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
+/**
+ * H2 Component
+ *
+ * Renders a secondary title or section heading within the page.
+ *
+ * @param className Additional CSS overload classes for the element.
+ * @param children The content to be rendered within the heading element.
+ * @param props Additional HTML attributes to be passed to the heading element.
+ * @returns JSX.Element or React.HTMLAttributes<HTMLHeadingElement>.
+ */
+const H2: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
   className,
   children,
   ...props
@@ -38,7 +58,17 @@ export const H2: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
   );
 };
 
-export const H3: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
+/**
+ * H3 Component
+ *
+ * Renders a subsection title within the page content.
+ *
+ * @param className Additional CSS overload classes for the element.
+ * @param children The content to be rendered within the heading element.
+ * @param props Additional HTML attributes to be passed to the heading element.
+ * @returns JSX.Element or React.HTMLAttributes<HTMLHeadingElement>.
+ */
+const H3: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
   className,
   children,
   ...props
@@ -56,7 +86,17 @@ export const H3: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
   );
 };
 
-export const H4: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
+/**
+ * H4 Component
+ *
+ * Renders a sub-subsection title within the page content.
+ *
+ * @param className Additional CSS overload classes for the element.
+ * @param children The content to be rendered within the heading element.
+ * @param props Additional HTML attributes to be passed to the heading element.
+ * @returns JSX.Element or React.HTMLAttributes<HTMLHeadingElement>.
+ */
+const H4: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
   className,
   children,
   ...props
@@ -73,3 +113,5 @@ export const H4: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
     </h4>
   );
 };
+
+export { H1, H2, H3, H4 };
