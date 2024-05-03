@@ -1,5 +1,6 @@
 import Wrapper from "@/components/base/Wrapper";
 import type { Metadata } from "next";
+import "@css";
 
 export const metadata: Metadata = {
   title: "Agglomération de Haguenau",

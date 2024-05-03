@@ -5,12 +5,13 @@ import { P } from "../typos";
 
 // Buton classes
 const leadingButtonVariants = cva(
-  "flex gap-4 p-1 rounded-md items-center pr-4 text-slate-600",
+  "flex gap-4 rounded-md items-center  text-slate-600",
   {
     variants: {
       variant: {
-        default: "border border-slate-400",
-        active: "bg-blue-100",
+        default: "border border-slate-400 p-1 pr-4",
+        buttonOnly: "",
+        active: "bg-blue-100 p-1 pr-4",
       },
       size: {
         default: "w-fit",
@@ -25,7 +26,7 @@ const leadingButtonVariants = cva(
 );
 
 //Icon classes
-const leadingButtonIconVariant = cva("rounded-sm p-2", {
+const leadingButtonIconVariants = cva("rounded-sm p-2", {
   variants: {
     button: {
       slate: "bg-slate-100 fill-slate-600",
@@ -71,11 +72,16 @@ const testButton = (child: {} | null | undefined) => {
 const LeadingButton: React.FC<
   React.ButtonHTMLAttributes<HTMLButtonElement> &
     VariantProps<typeof leadingButtonVariants> &
-    VariantProps<typeof leadingButtonIconVariant>
+    VariantProps<typeof leadingButtonIconVariants>
 > = ({ className, variant, size, button, children, ...props }) => {
   const text = React.Children.toArray(children).find(
     (child) => typeof child === "string"
   );
+
+  if (typeof text === "undefined") {
+    variant = "buttonOnly";
+  }
+
   const icon = React.Children.toArray(children).find((child) =>
     testButton(child)
   );
@@ -85,10 +91,10 @@ const LeadingButton: React.FC<
       className={cn(leadingButtonVariants({ variant, size, className }))}
       {...props}
     >
-      <span className={cn(leadingButtonIconVariant({ button }))}>{icon}</span>
-      <P variant="medium">{text}</P>
+      <span className={cn(leadingButtonIconVariants({ button }))}>{icon}</span>
+      {text && <P variant="medium">{text}</P>}
     </button>
   );
 };
 
-export { LeadingButton, leadingButtonVariants, leadingButtonIconVariant };
+export { LeadingButton, leadingButtonVariants, leadingButtonIconVariants };
