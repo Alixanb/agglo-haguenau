@@ -2,7 +2,14 @@ import { cn } from "@/lib/utils";
 import React from "react";
 import { twMerge } from "tailwind-merge";
 
-export default function ElemGrid({
+/**
+ *
+ * @param param0
+ * @todo turn this into rafc
+ * @returns
+ */
+
+export default function Grid({
   children,
   cols = 2,
 }: {

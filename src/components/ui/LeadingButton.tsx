@@ -5,11 +5,11 @@ import { P } from "../typos";
 
 // Buton classes
 const leadingButtonVariants = cva(
-  "flex gap-4 rounded-md items-center  text-slate-600",
+  "flex gap-4 rounded-md items-center text-slate-600",
   {
     variants: {
       variant: {
-        default: "border border-slate-400 p-1 pr-4",
+        default: "border border-slate-200 p-1 pr-4",
         buttonOnly: "",
         active: "bg-blue-100 p-1 pr-4",
       },
@@ -36,6 +36,7 @@ const leadingButtonIconVariants = cva("rounded-sm p-2", {
       red: "bg-red-100 fill-red-600",
       sky: "bg-sky-100 fill-sky-600",
       yellow: "bg-yellow-100 fill-yellow-600",
+      orange: "bg-orange-100 fill-orange-600",
       green: "bg-green-100 fill-green-600",
       lime: "bg-lime-100 fill-lime-600",
       purple: "bg-purple-100 fill-purple-600",
@@ -62,25 +63,29 @@ const testButton = (child: {} | null | undefined) => {
   }
 };
 
+interface LeadingButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
+    VariantProps<typeof leadingButtonVariants>,
+    VariantProps<typeof leadingButtonIconVariants> {
+  src?: string;
+}
+
 /**
  * A button with a colored and styled icon
  *
  * @param param0 Takes classical HTML tags
- * @todo Add styling and possibility to only put icon
+ * @todo Make this turnable into a Link Component
  * @returns A button with a styled icon.
  */
-const LeadingButton: React.FC<
-  React.ButtonHTMLAttributes<HTMLButtonElement> &
-    VariantProps<typeof leadingButtonVariants> &
-    VariantProps<typeof leadingButtonIconVariants>
-> = ({ className, variant, size, button, children, ...props }) => {
+const LeadingButton: React.FC<LeadingButtonProps> = (
+  { className, variant, size, button, children, ...props },
+  src
+) => {
   const text = React.Children.toArray(children).find(
     (child) => typeof child === "string"
   );
 
-  if (typeof text === "undefined") {
-    variant = "buttonOnly";
-  }
+  typeof text === "undefined" ? (variant = "buttonOnly") : null;
 
   const icon = React.Children.toArray(children).find((child) =>
     testButton(child)

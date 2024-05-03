@@ -1,5 +1,7 @@
 import React from "react";
 import { P } from "../typos";
+import { cn } from "@/lib/utils";
+import { twMerge } from "tailwind-merge";
 
 /**
  *
@@ -10,6 +12,7 @@ import { P } from "../typos";
  * @param children The content inside the ArticleCard component
  * @param title Title of the card
  * @param tags Array of the tags that you want to display on your card
+ * @todo rendre ce code mieux (comme LeadingButtonIcon)
  * @returns JSX.Element
  */
 
@@ -28,6 +31,9 @@ export default function Article({
   border?: boolean;
   misc?: string;
 }) {
+  let computedClass = "h-[" + imageHeight + "px] rounded-";
+  border ? (computedClass += "[2px]") : (computedClass += "md");
+
   return (
     <article
       className={`${
@@ -35,9 +41,7 @@ export default function Article({
       }  relative flex flex-col gap-2 pb-4`}
     >
       <div
-        className={`relative h-[${imageHeight}px] w-full overflow-hidden rounded-${
-          border ? "[2px]" : "md"
-        }`}
+        className={twMerge(computedClass, "relative w-full overflow-hidden")}
       >
         {children}
       </div>

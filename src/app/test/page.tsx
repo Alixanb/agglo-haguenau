@@ -13,7 +13,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
-import ElemGrid from "@/components/widgets/ArticleGrid";
+import ElemGrid from "@/components/widgets/Grid";
 import ArticleCard from "@/components/widgets/Article";
 import { H1, P, Small } from "@/components/typos";
 import { LeadingButton } from "@/components/ui/LeadingButton";
