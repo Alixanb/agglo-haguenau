@@ -2,10 +2,12 @@ import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 
-const paragraphVariants = cva("leading-7 [&:not(:first-child)]:mt-6", {
+const paragraphVariants = cva("", {
   variants: {
     variant: {
-      default: "leading-7 [&:not(:first-child)]:mt-6",
+      default: "leading-7",
+      medium: "font-medium",
+      paragraph: "leading-7 [&:not(:first-child)]:mt-6",
       lead: "text-xl text-muted-foreground",
       muted: "text-sm text-muted-foreground",
     },
@@ -19,7 +21,7 @@ const P = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement> &
     VariantProps<typeof paragraphVariants>
->(({ className, children, variant, ...props }, ref) => {
+>(({ className, children, variant, ...props }) => {
   return (
     <p className={cn(paragraphVariants({ variant, className }))} {...props}>
       {children}

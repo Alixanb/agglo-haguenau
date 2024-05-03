@@ -5,6 +5,7 @@ import "./globals.css";
 import ElemGrid from "@/components/widgets/ArticleGrid";
 import ArticleCard from "@/components/widgets/Article";
 import { H1, P, Small } from "@/components/typos";
+import { LeadingButton } from "@/components/ui/LeadingButton";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,22 +22,22 @@ export default function Home() {
       </div>
       <div>
         {/* <ElemGrid>
-          <ArticleCard title="Test" tags={["test"]}>
+          <Article title="Test" tags={["test"]}>
             <Image
               src="https://placehold.co/400x400"
               alt="Article de test"
               layout="fill"
               objectFit="cover"
             />
-          </ArticleCard>
-          <ArticleCard title="Test d'un gtitre trop longgggg" tags={["test"]}>
+          </Article>   
+          <Article title="Test d'un gtitre trop longgggg" tags={["test"]}>
             <Image
               src="https://placehold.co/400x400"
               alt="Article de test"
               layout="fill"
               objectFit="cover"
             />
-          </ArticleCard>
+          </Article>
         </ElemGrid> */}
         <div className="flex gap-16 self-stretch">
           <div className="p-1 pr-4 flex-grow"></div>

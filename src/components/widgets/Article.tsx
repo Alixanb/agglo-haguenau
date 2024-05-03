@@ -1,10 +1,15 @@
 import React from "react";
+import { P } from "../typos";
 
 /**
  *
+ * Articl Card
+ *
+ * Render an article card that have content in it. To Add an image or other content to the card, you must put it has a children
+ *
  * @param children The content inside the ArticleCard component
  * @param title Title of the card
- * @param tags Array of the tags that you want to display in your card
+ * @param tags Array of the tags that you want to display on your card
  * @returns JSX.Element
  */
 
@@ -14,12 +19,14 @@ export default function Article({
   tags = [],
   imageHeight = 100,
   border = false,
+  misc = "",
 }: {
   children: React.ReactNode;
   title: string;
   tags?: string[];
   imageHeight?: number;
   border?: boolean;
+  misc?: string;
 }) {
   return (
     <article
@@ -45,6 +52,7 @@ export default function Article({
           </React.Fragment>
         ))}
       </div>
+      {misc && <P className="text-blue-600">{misc}</P>}
     </article>
   );
 }
