@@ -4,6 +4,7 @@ import React from "react";
 import { P } from "../typos";
 import Image from "next/image";
 
+// TailwindCSS class variants for the article element
 const articleVariants = cva("relative flex flex-col gap-2 pb-4", {
   variants: {
     variant: {
@@ -16,6 +17,7 @@ const articleVariants = cva("relative flex flex-col gap-2 pb-4", {
   },
 });
 
+// TailwindCSS class variants for the image element
 const articleImageVariants = cva("relative w-full overflow-hidden ", {
   variants: {
     imageSize: {
@@ -37,9 +39,19 @@ interface ArticleProps
   tags: Array<string | number>;
 }
 
-/*
+/**
+ * Article Component
  *
+ * Renders an article card with an image, title, and optional tags.
  *
+ * @param className Additional CSS classes for the article element.
+ * @param variant Variant of the article card (e.g., default, border).
+ * @param imageSize Size of the image within the card (e.g., md, lg).
+ * @param src Source URL for the image.
+ * @param title Title of the article card.
+ * @param tags Array of tags to display on the card.
+ * @param props Additional HTML attributes to be passed to the article element.
+ * @returns JSX.Element or React.HTMLAttributes<HTMLDivElement>.
  */
 const Article = React.forwardRef<
   React.HTMLAttributes<HTMLDivElement>,
@@ -62,13 +74,16 @@ const Article = React.forwardRef<
         {tags.map((item, i) => (
           <React.Fragment key={i}>
             <p>{item}</p>
-            {i !== tags.length - 1 ? <span>&bull;</span> : null}
+            {/* Render a &bull; char after the tag if it's not the last tag */}
+            {i !== tags.length - 1 && <span>&bull;</span>}
           </React.Fragment>
         ))}
       </div>
     )}
   </article>
 ));
-
 Article.displayName = "Article";
-export { Article, articleVariants };
+
+const ArticleBanner = () => {};
+
+export { Article, ArticleBanner, articleVariants };

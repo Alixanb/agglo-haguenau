@@ -9,6 +9,7 @@ import { Article } from "@/components/widgets/Article";
 import { Main, Section, SubSection } from "@/components/layout/Section";
 import { Button } from "@/components/ui/button";
 import Grid from "@/components/widgets/Grid";
+import { Modal } from "@/components/widgets/Popup";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -17,6 +18,13 @@ const inter = Inter({
 export default function Home() {
   return (
     <Main className={cn(" ", inter.className)}>
+      <Modal
+        title="Popup de test"
+        period="Du Lundi 06/05 au Mardi 14/05"
+        text="There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form."
+        src="https://placehold.co/400x400"
+        href="test"
+      ></Modal>
       <div className="flex flex-col ">
         <Small className="text-slate-400">Bienvenue, vous ête sur</Small>
         <H1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
