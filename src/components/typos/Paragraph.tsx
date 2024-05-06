@@ -2,7 +2,7 @@ import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 
-const paragraphVariants = cva("", {
+const paragraphVariants = cva("text-start", {
   variants: {
     variant: {
       default: "leading-7",

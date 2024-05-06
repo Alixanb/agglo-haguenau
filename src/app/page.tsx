@@ -2,11 +2,10 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
 import ElemGrid from "@/components/widgets/Grid";
-import ArticleCard from "@/components/widgets/Article";
 import { H1, H2, H3, P, Small } from "@/components/typos";
 import { LeadingButton } from "@/components/ui/LeadingButton";
 import { BasicHeader } from "@/components/layout/Header";
-import Article from "@/components/widgets/Article";
+import { Article } from "@/components/widgets/Article";
 import { Main, Section, SubSection } from "@/components/layout/Section";
 import { Button } from "@/components/ui/button";
 import Grid from "@/components/widgets/Grid";
@@ -21,7 +20,7 @@ export default function Home() {
       <div className="flex flex-col ">
         <Small className="text-slate-400">Bienvenue, vous ête sur</Small>
         <H1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">
-          Page de test
+          Agglomération
         </H1>
       </div>
       <Section>
@@ -29,48 +28,24 @@ export default function Home() {
         <ElemGrid>
           <Article
             title="Inscription au Rendez-vous de la Jeunesse"
-            tags={["Vie commune", "24h"]}
-          >
-            <Image
-              src="https://placehold.co/400x400"
-              alt="Article de test"
-              layout="fill"
-              objectFit="cover"
-            />
-          </Article>
-          <Article
-            title="Et vous, comment vous déplacez-vous ?"
-            tags={["Sport", "2 jours"]}
-          >
-            <Image
-              src="https://placehold.co/400x400"
-              alt="Article de test"
-              layout="fill"
-              objectFit="cover"
-            />
-          </Article>
-          <Article
-            title="Inventaire des Zones d’Activités Economiques"
-            tags={["Faits divers", "4 jours"]}
-          >
-            <Image
-              src="https://placehold.co/400x400"
-              alt="Article de test"
-              layout="fill"
-              objectFit="cover"
-            />
-          </Article>
+            src="https://placehold.co/400x400"
+            tags={["This", "tag"]}
+          ></Article>
           <Article
             title="Inscription au Rendez-vous de la Jeunesse"
-            tags={["Vie commune", "24h"]}
-          >
-            <Image
-              src="https://placehold.co/400x400"
-              alt="Article de test"
-              layout="fill"
-              objectFit="cover"
-            />
-          </Article>
+            src="https://placehold.co/400x400"
+            tags={["This", "tag"]}
+          ></Article>
+          <Article
+            title="Inscription au Rendez-vous de la Jeunesse"
+            src="https://placehold.co/400x400"
+            tags={["This", "tag"]}
+          ></Article>
+          <Article
+            title="Inscription au Rendez-vous de la Jeunesse"
+            src="https://placehold.co/400x400"
+            tags={["This", "tag"]}
+          ></Article>
         </ElemGrid>
         <Button variant={"outline"}>Voir dans l&apos;agenda</Button>
       </Section>
@@ -112,7 +87,88 @@ export default function Home() {
               >
                 <path d="M510-492.15V-650q0-12.75-8.63-21.38-8.63-8.62-21.38-8.62-12.76 0-21.37 8.62Q450-662.75 450-650v167.08q0 7.06 2.62 13.68 2.61 6.62 8.23 12.24l137 137q8.3 8.31 20.88 8.5 12.58.19 21.27-8.5t8.69-21.08q0-12.38-8.69-21.07l-130-130ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100ZM480-480Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z" />
               </svg>
+              Plans
+            </LeadingButton>
+          </Grid>
+        </SubSection>
+        <SubSection>
+          <H3>TILT - Bibliothèques</H3>
+          <Grid>
+            <LeadingButton button="blue" size="full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+              >
+                <path d="M510-492.15V-650q0-12.75-8.63-21.38-8.63-8.62-21.38-8.62-12.76 0-21.37 8.62Q450-662.75 450-650v167.08q0 7.06 2.62 13.68 2.61 6.62 8.23 12.24l137 137q8.3 8.31 20.88 8.5 12.58.19 21.27-8.5t8.69-21.08q0-12.38-8.69-21.07l-130-130ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100ZM480-480Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z" />
+              </svg>
               Horaires
+            </LeadingButton>
+            <LeadingButton button="blue" size="full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+              >
+                <path d="M510-492.15V-650q0-12.75-8.63-21.38-8.63-8.62-21.38-8.62-12.76 0-21.37 8.62Q450-662.75 450-650v167.08q0 7.06 2.62 13.68 2.61 6.62 8.23 12.24l137 137q8.3 8.31 20.88 8.5 12.58.19 21.27-8.5t8.69-21.08q0-12.38-8.69-21.07l-130-130ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100ZM480-480Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z" />
+              </svg>
+              Plans
+            </LeadingButton>
+          </Grid>
+        </SubSection>
+        <SubSection>
+          <H3>Mes services</H3>
+          <Grid>
+            <LeadingButton button="slate" size="full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+              >
+                <path d="M510-492.15V-650q0-12.75-8.63-21.38-8.63-8.62-21.38-8.62-12.76 0-21.37 8.62Q450-662.75 450-650v167.08q0 7.06 2.62 13.68 2.61 6.62 8.23 12.24l137 137q8.3 8.31 20.88 8.5 12.58.19 21.27-8.5t8.69-21.08q0-12.38-8.69-21.07l-130-130ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100ZM480-480Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z" />
+              </svg>
+              Commerces
+            </LeadingButton>
+            <LeadingButton button="slate" size="full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+              >
+                <path d="M510-492.15V-650q0-12.75-8.63-21.38-8.63-8.62-21.38-8.62-12.76 0-21.37 8.62Q450-662.75 450-650v167.08q0 7.06 2.62 13.68 2.61 6.62 8.23 12.24l137 137q8.3 8.31 20.88 8.5 12.58.19 21.27-8.5t8.69-21.08q0-12.38-8.69-21.07l-130-130ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100ZM480-480Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z" />
+              </svg>
+              Cultures
+            </LeadingButton>
+          </Grid>
+        </SubSection>
+        <SubSection>
+          <H3>Espace Famille</H3>
+          <Grid>
+            <LeadingButton button="dark" variant="dark" size="full">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+              >
+                <path d="M510-492.15V-650q0-12.75-8.63-21.38-8.63-8.62-21.38-8.62-12.76 0-21.37 8.62Q450-662.75 450-650v167.08q0 7.06 2.62 13.68 2.61 6.62 8.23 12.24l137 137q8.3 8.31 20.88 8.5 12.58.19 21.27-8.5t8.69-21.08q0-12.38-8.69-21.07l-130-130ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100ZM480-480Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z" />
+              </svg>
+              Transports
+            </LeadingButton>
+            <LeadingButton button="dark" variant="dark" size="full" link="out">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                viewBox="0 -960 960 960"
+                width="24"
+              >
+                <path d="M510-492.15V-650q0-12.75-8.63-21.38-8.63-8.62-21.38-8.62-12.76 0-21.37 8.62Q450-662.75 450-650v167.08q0 7.06 2.62 13.68 2.61 6.62 8.23 12.24l137 137q8.3 8.31 20.88 8.5 12.58.19 21.27-8.5t8.69-21.08q0-12.38-8.69-21.07l-130-130ZM480.07-100q-78.84 0-148.21-29.92t-120.68-81.21q-51.31-51.29-81.25-120.63Q100-401.1 100-479.93q0-78.84 29.92-148.21t81.21-120.68q51.29-51.31 120.63-81.25Q401.1-860 479.93-860q78.84 0 148.21 29.92t120.68 81.21q51.31 51.29 81.25 120.63Q860-558.9 860-480.07q0 78.84-29.92 148.21t-81.21 120.68q-51.29 51.31-120.63 81.25Q558.9-100 480.07-100ZM480-480Zm0 320q133 0 226.5-93.5T800-480q0-133-93.5-226.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160Z" />
+              </svg>
+              Écoles
             </LeadingButton>
           </Grid>
         </SubSection>

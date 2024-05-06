@@ -1,53 +1,63 @@
+import { cn } from "@/lib/utils";
+import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 import { P } from "../typos";
-import { cn } from "@/lib/utils";
-import { twMerge } from "tailwind-merge";
+import Image from "next/image";
 
-/**
- *
- * Articl Card
- *
- * Render an article card that have content in it. To Add an image or other content to the card, you must put it has a children
- *
- * @param children The content inside the ArticleCard component
- * @param title Title of the card
- * @param tags Array of the tags that you want to display on your card
- * @todo rendre ce code mieux (comme LeadingButtonIcon)
- * @returns JSX.Element
- */
+const articleVariants = cva("relative flex flex-col gap-2 pb-4", {
+  variants: {
+    variant: {
+      default: "",
+      border: "border border-slate-200 p-1",
+    },
+  },
+  defaultVariants: {
+    variant: "default",
+  },
+});
 
-export default function Article({
-  children,
-  title,
-  tags = [],
-  imageHeight = 100,
-  border = false,
-  misc = "",
-}: {
-  children: React.ReactNode;
+const articleImageVariants = cva("relative w-full overflow-hidden ", {
+  variants: {
+    imageSize: {
+      md: "rounded-[2px] h-24",
+      lg: "rounded-[2px] h-32",
+    },
+  },
+  defaultVariants: {
+    imageSize: "md",
+  },
+});
+
+interface ArticleProps
+  extends VariantProps<typeof articleVariants>,
+    VariantProps<typeof articleImageVariants>,
+    React.HTMLAttributes<HTMLDivElement> {
+  src: string;
   title: string;
-  tags?: string[];
-  imageHeight?: number;
-  border?: boolean;
-  misc?: string;
-}) {
-  let computedClass = "h-[" + imageHeight + "px] rounded-";
-  border ? (computedClass += "[2px]") : (computedClass += "md");
+  tags: Array<string | number>;
+}
 
-  return (
-    <article
-      className={`${
-        border ? "border border-slate-200 p-1" : ""
-      }  relative flex flex-col gap-2 pb-4`}
+/*
+ *
+ *
+ */
+const Article = React.forwardRef<
+  React.HTMLAttributes<HTMLDivElement>,
+  ArticleProps
+>(({ className, variant, imageSize, src, title, tags, ...props }, ref) => (
+  <article className={cn(articleVariants({ className, variant }))} {...props}>
+    <div
+      className={cn(
+        articleImageVariants({ imageSize }),
+        "relative w-full overflow-hidden rounded-md"
+      )}
     >
-      <div
-        className={twMerge(computedClass, "relative w-full overflow-hidden")}
-      >
-        {children}
-      </div>
-      <h3 className="text-lg w-full font-semibold  text-black text-ellipsis overflow-hidden whitespace-nowrap tracking-tigt scroll-m-20">
-        {title}
-      </h3>
+      <Image src={src} alt="Image" layout="fill" objectFit="cover" />
+    </div>
+    <h3 className="text-lg w-full font-semibold text-black text-ellipsis overflow-hidden whitespace-nowrap tracking-tigt scroll-m-20">
+      {title}
+    </h3>
+    {tags && (
       <div className="flex gap-1 text-sm font-medium leading-none text-slate-400">
         {tags.map((item, i) => (
           <React.Fragment key={i}>
@@ -56,7 +66,9 @@ export default function Article({
           </React.Fragment>
         ))}
       </div>
-      {misc && <P className="text-blue-600">{misc}</P>}
-    </article>
-  );
-}
+    )}
+  </article>
+));
+
+Article.displayName = "Article";
+export { Article, articleVariants };

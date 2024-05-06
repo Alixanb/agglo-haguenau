@@ -10,6 +10,7 @@ const leadingButtonVariants = cva(
     variants: {
       variant: {
         default: "border border-slate-200 p-1 pr-4",
+        dark: "border border-slate-600 p-1 pr-4",
         buttonOnly: "",
         active: "bg-blue-100 p-1 pr-4",
       },
@@ -30,6 +31,7 @@ const leadingButtonIconVariants = cva("rounded-sm p-2", {
   variants: {
     button: {
       slate: "bg-slate-100 fill-slate-600",
+      dark: "bg-slate-600 fill-slate-100",
       gray: "bg-gray-100 fill-gray-600",
       black: "bg-black fill-gray-400",
       blue: "bg-blue-100 fill-blue-600",
@@ -68,6 +70,7 @@ interface LeadingButtonProps
     VariantProps<typeof leadingButtonVariants>,
     VariantProps<typeof leadingButtonIconVariants> {
   src?: string;
+  link?: "default" | "out" | "next" | null | undefined;
 }
 
 /**
@@ -77,10 +80,16 @@ interface LeadingButtonProps
  * @todo Make this turnable into a Link Component
  * @returns A button with a styled icon.
  */
-const LeadingButton: React.FC<LeadingButtonProps> = (
-  { className, variant, size, button, children, ...props },
-  src
-) => {
+const LeadingButton: React.FC<LeadingButtonProps> = ({
+  className,
+  variant,
+  size,
+  button,
+  children,
+  link,
+  src,
+  ...props
+}) => {
   const text = React.Children.toArray(children).find(
     (child) => typeof child === "string"
   );
@@ -97,7 +106,10 @@ const LeadingButton: React.FC<LeadingButtonProps> = (
       {...props}
     >
       <span className={cn(leadingButtonIconVariants({ button }))}>{icon}</span>
-      {text && <P variant="medium">{text}</P>}
+      <div className="w-full justify-between">
+        {text && <P variant="medium">{text}</P>}
+        {link === "out" && true}
+      </div>
     </button>
   );
 };
