@@ -2,6 +2,7 @@ import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 
+// Variants for the paragraph component
 const paragraphVariants = cva("text-start", {
   variants: {
     variant: {
@@ -17,6 +18,17 @@ const paragraphVariants = cva("text-start", {
   },
 });
 
+/**
+ * P Component
+ *
+ * Renders a paragraph element with customizable styling.
+ *
+ * @param className Additional CSS classes for the paragraph element.
+ * @param children The content to be rendered within the paragraph element.
+ * @param variant Variant style for the paragraph element.
+ * @param props Additional HTML attributes to be passed to the paragraph element.
+ * @returns JSX.Element or React.HTMLAttributes<HTMLParagraphElement>.
+ */
 const P = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement> &

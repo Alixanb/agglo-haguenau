@@ -32,6 +32,21 @@ interface ModalProps
   src?: string;
 }
 
+/**
+ * Modal Component
+ *
+ * Renders a modal overlay with customizable content. !Must be used for alert only!
+ *
+ * @param className Additional CSS classes for the modal container.
+ * @param variant Variant style for the modal container.
+ * @param title Title displayed in the modal.
+ * @param text Text content displayed in the modal.
+ * @param period Additional information displayed in the modal.
+ * @param href URL for the link button displayed in the modal.
+ * @param src Image source URL displayed in the modal.
+ * @param props Additional HTML attributes to be passed to the modal container.
+ * @returns JSX.Element or React.HTMLAttributes<HTMLDivElement>.
+ */
 const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
   ({ className, variant, title, text, period, href, src, ...props }, ref) => {
     const [modal, setModal] = useState<boolean>(true);
