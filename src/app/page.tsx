@@ -34,44 +34,46 @@ export default function Home() {
       </div>
       <Section>
         <H2>Accès rapides</H2>
-        <LeadingButton link="out" accent="blue">
-          <Router />
-          Mes services en ligne
-        </LeadingButton>
-        <Grid>
-          <LeadingButton accent="orange">
-            <TrafficCone />
-            Info travaux
+        <SubSection>
+          <LeadingButton link="out" accent="blue">
+            <Router />
+            Mes services en ligne
           </LeadingButton>
-          <LeadingButton accent="green">
-            <Trash2 />
-            Info dechets
+          <Grid size="sm">
+            <LeadingButton accent="orange">
+              <TrafficCone />
+              Info travaux
+            </LeadingButton>
+            <LeadingButton accent="green">
+              <Trash2 />
+              Info dechets
+            </LeadingButton>
+          </Grid>
+          <Grid size="sm">
+            <LeadingButton accent="blue">
+              <SquareParking />
+              Parkings
+            </LeadingButton>
+            <LeadingButton accent="red">
+              <BusFront />
+              RITMO
+            </LeadingButton>
+          </Grid>
+          <LeadingButton link="out" accent="red">
+            <TriangleAlert />
+            Créer un signalement
           </LeadingButton>
-        </Grid>
-        <Grid>
-          <LeadingButton accent="blue">
-            <SquareParking />
-            Parkings
-          </LeadingButton>
-          <LeadingButton accent="red">
-            <BusFront />
-            RITMO
-          </LeadingButton>
-        </Grid>
-        <LeadingButton link="out" accent="red">
-          <TriangleAlert />
-          Créer un signalement
-        </LeadingButton>
-        <Grid>
-          <LeadingButton accent="yellow">
-            <Megaphone />
-            Alertes
-          </LeadingButton>
-          <LeadingButton accent="slate">
-            <Users />
-            Espace Famille
-          </LeadingButton>
-        </Grid>
+          <Grid size="sm">
+            <LeadingButton accent="yellow">
+              <Megaphone />
+              Alertes
+            </LeadingButton>
+            <LeadingButton accent="slate">
+              <Users />
+              Espace Famille
+            </LeadingButton>
+          </Grid>
+        </SubSection>
         <Button variant={"outline"}>Voir dans l&apos;agenda</Button>
       </Section>
       <ArticleBanner

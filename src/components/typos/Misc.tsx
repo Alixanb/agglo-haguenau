@@ -93,7 +93,10 @@ const Small: React.FC<React.HTMLAttributes<HTMLElement>> = ({
 }) => {
   return (
     <small
-      className={cn("text-sm font-medium leading-none", className)}
+      className={cn(
+        "text-sm font-medium leading-none text-slate-600",
+        className
+      )}
       {...props}
     >
       {children}

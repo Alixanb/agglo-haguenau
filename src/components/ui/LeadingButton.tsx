@@ -1,7 +1,8 @@
 import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
-import { P } from "../typos";
+import { P, Small } from "../typos";
+import { ChevronRight, SquareArrowOutUpRight } from "lucide-react";
 
 // Buton classes
 const leadingButtonVariants = cva("flex gap-4 rounded-md items-center curre", {
@@ -84,7 +85,7 @@ interface LeadingButtonProps
  * @param src Source URL for the button.
  * @param props Additional HTML attributes to be passed to the button element.
  * @returns A button with a styled icon.
- * @todo link type (out & next)
+ * @todo src, if link the it's a link, or it is a button
  */
 const LeadingButton: React.FC<LeadingButtonProps> = ({
   className,
@@ -116,16 +117,26 @@ const LeadingButton: React.FC<LeadingButtonProps> = ({
           stroke: "default",
         })}
       </span>
-      <div className="w-full justify-between">
+      <div className={link ? "flex justify-between items-center w-full" : ""}>
         {text && (
-          <P
-            variant="medium"
-            className="w-full text-ellipsis overflow-hidden whitespace-nowrap"
-          >
+          <Small className="h-fit text-ellipsis overflow-hidden whitespace-nowrap">
             {text}
-          </P>
+          </Small>
         )}
-        {link === "out" && true}
+        {link === "out" && (
+          <SquareArrowOutUpRight
+            className="stroke-slate-600"
+            stroke="default"
+            size={20}
+          />
+        )}
+        {link === "next" && (
+          <ChevronRight
+            className="stroke-slate-600"
+            stroke="default"
+            size={20}
+          />
+        )}
       </div>
     </button>
   );
