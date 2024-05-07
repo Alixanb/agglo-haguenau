@@ -169,4 +169,10 @@ const ArticleBanner = React.forwardRef<
 );
 ArticleBanner.displayName = "ArticleBanner";
 
-export { Article, ArticleBanner, articleVariants };
+export {
+  Article,
+  articleVariants,
+  articleImageVariants,
+  ArticleBanner,
+  articleBannerVariants,
+};
