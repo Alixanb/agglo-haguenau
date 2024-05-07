@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import ElemGrid from "@/components/widgets/Grid";
 import { H1, H2, H3, P, Small } from "@/components/typos";
 import { LeadingButton } from "@/components/ui/LeadingButton";
-import { Article } from "@/components/widgets/Article";
+import { Article, ArticleBanner } from "@/components/widgets/Article";
 import { Main, Section, SubSection } from "@/components/layout/";
 import { Button } from "@/components/ui/button";
 import Grid from "@/components/widgets/Grid";
@@ -25,16 +25,23 @@ export default function Home() {
       </div>
       <Section>
         <H2>Actualités</H2>
+        <ArticleBanner
+          title="Inscription au marché"
+          src="https://placehold.co/400x400"
+          href="./"
+        />
         <ElemGrid>
           <Article
             title="Inscription au Rendez-vous de la Jeunesse"
             src="https://placehold.co/400x400"
             tags={["This", "tag"]}
+            href="./"
           ></Article>
           <Article
             title="Inscription au Rendez-vous de la Jeunesse"
             src="https://placehold.co/400x400"
             tags={["This", "tag"]}
+            href="./"
           ></Article>
         </ElemGrid>
         <Button variant={"outline"}>Voir dans l&apos;agenda</Button>
