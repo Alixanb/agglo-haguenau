@@ -1,4 +1,4 @@
-import Wrapper from "@/components/base/Wrapper";
+import Wrapper from "@/components/layout/Wrapper";
 import type { Metadata } from "next";
 import "@css";
 

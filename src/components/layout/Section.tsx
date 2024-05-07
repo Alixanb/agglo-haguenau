@@ -1,5 +1,6 @@
 import { cn } from "@/lib/utils";
 import React from "react";
+import { Nav } from "./";
 
 const Section: React.FC<React.HTMLAttributes<HTMLElement>> = (
   { className, children },
@@ -29,6 +30,7 @@ const Main: React.FC<React.HTMLAttributes<HTMLElement>> = (
 ) => {
   return (
     <main className={cn(className, "flex flex-col gap-12")} {...props}>
+      <Nav active="home" />
       {children}
     </main>
   );

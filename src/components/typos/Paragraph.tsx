@@ -33,7 +33,7 @@ const P = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLParagraphElement> &
     VariantProps<typeof paragraphVariants>
->(({ className, children, variant, ...props }) => {
+>(({ className, children, variant, ...props }, ref) => {
   return (
     <p className={cn(paragraphVariants({ variant, className }))} {...props}>
       {children}
