@@ -13,20 +13,20 @@ const leadingButtonVariants = cva("flex gap-4 rounded-md items-center curre", {
       active: "bg-blue-100 p-1 pr-4",
     },
     size: {
-      default: "w-fit",
+      fit: "w-fit",
       full: "w-full-3",
     },
   },
   defaultVariants: {
     variant: "default",
-    size: "default",
+    size: "full",
   },
 });
 
 //Icon classes
 const leadingButtonIconVariants = cva("rounded-sm p-2", {
   variants: {
-    button: {
+    accent: {
       slate: "bg-slate-100 stroke-slate-600",
       dark: "bg-slate-600 stroke-slate-100",
       gray: "bg-gray-100 stroke-gray-600",
@@ -42,7 +42,7 @@ const leadingButtonIconVariants = cva("rounded-sm p-2", {
     },
   },
   defaultVariants: {
-    button: "blue",
+    accent: "blue",
   },
 });
 
@@ -84,12 +84,13 @@ interface LeadingButtonProps
  * @param src Source URL for the button.
  * @param props Additional HTML attributes to be passed to the button element.
  * @returns A button with a styled icon.
+ * @todo link type (out & next)
  */
 const LeadingButton: React.FC<LeadingButtonProps> = ({
   className,
   variant,
   size,
-  button,
+  accent,
   children,
   link,
   src,
@@ -110,13 +111,20 @@ const LeadingButton: React.FC<LeadingButtonProps> = ({
       className={cn(leadingButtonVariants({ variant, size, className }))}
       {...props}
     >
-      <span className={cn(leadingButtonIconVariants({ button }))}>
+      <span className={cn(leadingButtonIconVariants({ accent }))}>
         {React.cloneElement(icon, {
           stroke: "default",
         })}
       </span>
       <div className="w-full justify-between">
-        {text && <P variant="medium">{text}</P>}
+        {text && (
+          <P
+            variant="medium"
+            className="w-full text-ellipsis overflow-hidden whitespace-nowrap"
+          >
+            {text}
+          </P>
+        )}
         {link === "out" && true}
       </div>
     </button>

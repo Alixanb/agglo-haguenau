@@ -7,7 +7,17 @@ import { Article, ArticleBanner } from "@/components/widgets/Article";
 import { Main, Section, SubSection } from "@/components/layout/";
 import { Button } from "@/components/ui/button";
 import { Grid } from "@/components/widgets/Grid";
-import { HomeIcon } from "lucide-react";
+import {
+  BusFront,
+  HomeIcon,
+  Megaphone,
+  Router,
+  SquareParking,
+  TrafficCone,
+  Trash2,
+  TriangleAlert,
+  Users,
+} from "lucide-react";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,28 +33,52 @@ export default function Home() {
         </H1>
       </div>
       <Section>
-        <H2>Actualités</H2>
-        <ArticleBanner
-          title="Inscription au marché"
-          src="https://placehold.co/400x400"
-          href="./"
-        />
+        <H2>Accès rapides</H2>
+        <LeadingButton link="out" accent="blue">
+          <Router />
+          Mes services en ligne
+        </LeadingButton>
         <Grid>
-          <Article
-            title="Inscription au Rendez-vous de la Jeunesse"
-            src="https://placehold.co/400x400"
-            tags={["This", "tag"]}
-            href="./"
-          ></Article>
-          <Article
-            title="Inscription au Rendez-vous de la Jeunesse"
-            src="https://placehold.co/400x400"
-            tags={["This", "tag"]}
-            href="./"
-          ></Article>
+          <LeadingButton accent="orange">
+            <TrafficCone />
+            Info travaux
+          </LeadingButton>
+          <LeadingButton accent="green">
+            <Trash2 />
+            Info dechets
+          </LeadingButton>
+        </Grid>
+        <Grid>
+          <LeadingButton accent="blue">
+            <SquareParking />
+            Parkings
+          </LeadingButton>
+          <LeadingButton accent="red">
+            <BusFront />
+            RITMO
+          </LeadingButton>
+        </Grid>
+        <LeadingButton link="out" accent="red">
+          <TriangleAlert />
+          Créer un signalement
+        </LeadingButton>
+        <Grid>
+          <LeadingButton accent="yellow">
+            <Megaphone />
+            Alertes
+          </LeadingButton>
+          <LeadingButton accent="slate">
+            <Users />
+            Espace Famille
+          </LeadingButton>
         </Grid>
         <Button variant={"outline"}>Voir dans l&apos;agenda</Button>
       </Section>
+      <ArticleBanner
+        title="Inscription au marché"
+        src="https://www.haguenau.fr/img/frontOffice/slideAcceuil/1920px_1128px-1711126160_c094c8ad087961b5e0b5.jpg"
+        href="./"
+      />
     </Main>
   );
 }
