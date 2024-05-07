@@ -8,8 +8,8 @@ import { ChevronRight, SquareArrowOutUpRight } from "lucide-react";
 const leadingButtonVariants = cva("flex gap-3 rounded-md items-center ", {
   variants: {
     variant: {
-      default: "border border-slate-200 p-1",
-      dark: "border border-slate-600 p-1",
+      default: "border border-border p-1 ",
+      dark: "border border-border p-1",
       buttonOnly: "",
       active: "bg-blue-100 p-1",
     },
@@ -28,19 +28,24 @@ const leadingButtonVariants = cva("flex gap-3 rounded-md items-center ", {
 const leadingButtonIconVariants = cva("rounded-sm p-2", {
   variants: {
     accent: {
-      slate: "bg-slate-100 stroke-slate-600",
-      dark: "bg-slate-600 stroke-slate-100",
-      gray: "bg-gray-100 stroke-gray-600",
-      black: "bg-black stroke-gray-400",
-      blue: "bg-blue-100 stroke-blue-600",
-      red: "bg-red-100 stroke-red-600",
-      sky: "bg-sky-100 stroke-sky-600",
-      yellow: "bg-yellow-100 stroke-yellow-600",
-      orange: "bg-orange-100 stroke-orange-600",
-      green: "bg-green-100 stroke-green-600",
-      pink: "bg-pink-100 stroke-pink-600",
-      lime: "bg-lime-100 stroke-lime-600",
-      purple: "bg-purple-100 stroke-purple-600",
+      slate:
+        "bg-slate-100 stroke-slate-600 dark:bg-slate-600 dark:stroke-slate-100",
+      dark: "bg-slate-600 stroke-slate-100 dark:bg-slate-600 dark:stroke-slate-100",
+      gray: "bg-gray-100 stroke-gray-600 dark:bg-gray-600 dark:stroke-gray-100",
+      black: "bg-black stroke-gray-400 dark:bg-gray-400 dark:stroke-black",
+      blue: "bg-blue-100 stroke-blue-600 dark:bg-blue-600 dark:stroke-blue-100",
+      red: "bg-red-100 stroke-red-600 dark:bg-red-600 dark:stroke-red-100",
+      sky: "bg-sky-100 stroke-sky-600 dark:bg-sky-600 dark:stroke-sky-100",
+      yellow:
+        "bg-yellow-100 stroke-yellow-600 dark:bg-yellow-600 dark:stroke-yellow-100",
+      orange:
+        "bg-orange-100 stroke-orange-600 dark:bg-orange-600 dark:stroke-orange-100",
+      green:
+        "bg-green-100 stroke-green-600 dark:bg-green-600 dark:stroke-green-100",
+      pink: "bg-pink-100 stroke-pink-600 dark:bg-pink-600 dark:stroke-pink-100",
+      lime: "bg-lime-100 stroke-lime-600 dark:bg-lime-600 dark:stroke-lime-100",
+      purple:
+        "bg-purple-100 stroke-purple-600 dark:bg-purple-600 dark:stroke-purple-100",
     },
   },
   defaultVariants: {

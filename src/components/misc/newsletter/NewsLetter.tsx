@@ -35,7 +35,7 @@ const NewsLetter = () => {
         <LeadingButton accentClass="bg-blue-600 stroke-white" size="fit">
           <Facebook />
         </LeadingButton>
-        <LeadingButton accentClass="bg-sky-100 stroke-sky-600" size="fit">
+        <LeadingButton accent="sky" size="fit">
           <Linkedin />
         </LeadingButton>
       </div>

@@ -21,7 +21,7 @@ const H1: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
     <h1
       className={cn(
         className,
-        "scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl"
+        "scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-primary"
       )}
       {...props}
     >
@@ -49,7 +49,7 @@ const H2: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
     <h2
       className={cn(
         className,
-        "scroll-m-20 text-2xl font-semibold  first:mt-0"
+        "scroll-m-20 text-2xl font-semibold first:mt-0 text-primary"
       )}
       {...props}
     >
@@ -75,10 +75,7 @@ const H3: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
 }) => {
   return (
     <h3
-      className={cn(
-        className,
-        "scroll-m-20 text-lg font-medium text-slate-700"
-      )}
+      className={cn(className, "scroll-m-20 text-lg font-medium text-primary")}
       {...props}
     >
       {children}
@@ -105,7 +102,7 @@ const H4: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
     <h4
       className={cn(
         className,
-        "scroll-m-20 text-xl font-semibold tracking-tight"
+        "scroll-m-20 text-xl font-semibold tracking-tight text-secondary"
       )}
       {...props}
     >

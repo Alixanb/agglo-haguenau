@@ -3,7 +3,7 @@ import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 
 // Variants for the paragraph component
-const paragraphVariants = cva("text-start", {
+const paragraphVariants = cva("text-start text-primary", {
   variants: {
     variant: {
       default: "leading-7",

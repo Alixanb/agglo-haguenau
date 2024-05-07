@@ -11,7 +11,7 @@ const articleVariants = cva("relative flex flex-col gap-2 pb-4", {
   variants: {
     variant: {
       default: "",
-      outline: "border border-slate-200 p-2 rounded-md",
+      outline: "border border-border p-2 rounded-md",
     },
   },
   defaultVariants: {
@@ -136,7 +136,7 @@ const ArticleBanner = React.forwardRef<
       className={cn(articleBannerVariants({ className, variant }))}
       {...props}
     >
-      <div className="h-36 rounded-2xl relative overflow-hidden flex items-end">
+      <div className="h-36 rounded-md relative overflow-hidden flex items-end">
         <Image src={src} alt="Image" layout="fill" objectFit="cover" />
         <div className="absolute inset-0 bg-black opacity-30"></div>
         <div className="z-30 relative p-4">

@@ -152,7 +152,7 @@ const NavElement = React.forwardRef<HTMLLIElement, NavElement>(
     <li className={cn(className, "w-full z-50")} {...props} ref={ref}>
       <Link
         href={href}
-        className="flex flex-col items-center gap-2 w-full h-16 justify-center fill-slate-800 text-slate-800"
+        className="flex flex-col items-center gap-2 w-full h-16 justify-center fill-slate-800 dark:fill-slate-400 "
       >
         {isActive ? (
           <>
@@ -184,7 +184,7 @@ interface NavProps extends React.HTMLAttributes<HTMLElement> {
 const Nav = React.forwardRef<HTMLElement, NavProps>(
   ({ active, ...props }, ref) => (
     <nav
-      className="flex fixed bottom-0 left-0 bg-slate-50 w-full rounded-t-3xl z-50"
+      className="flex fixed bottom-0 left-0 bg-slate-50 dark:bg-slate-900 w-full rounded-t-3xl z-50"
       {...props}
       ref={ref}
     >

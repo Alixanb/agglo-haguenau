@@ -8,9 +8,9 @@ export default function Wrapper({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="fr">
-      <body>
-        <div className={cn("m-5 mt-16 mb-8", inter.className)}>{children}</div>
+    <html lang="fr" className="dark">
+      <body className="bg-background">
+        <div className={cn("m-5 mt-16 mb-8 ", inter.className)}>{children}</div>
       </body>
     </html>
   );

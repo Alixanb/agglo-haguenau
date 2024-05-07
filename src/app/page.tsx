@@ -102,7 +102,7 @@ export default function Home() {
             src="https://www.haguenau.fr/img/frontOffice/slideAcceuil/1920px_1128px-1711126160_c094c8ad087961b5e0b5.jpg"
             href="./"
           />
-          <Button variant="outline">
+          <Button>
             <span className="pr-2">Voir tout</span>
             <ArrowUpRight size={16} />
           </Button>
