@@ -5,13 +5,13 @@ import { P, Small } from "../typos";
 import { ChevronRight, SquareArrowOutUpRight } from "lucide-react";
 
 // Buton classes
-const leadingButtonVariants = cva("flex gap-4 rounded-md items-center curre", {
+const leadingButtonVariants = cva("flex gap-3 rounded-md items-center ", {
   variants: {
     variant: {
-      default: "border border-slate-200 p-1 pr-4",
-      dark: "border border-slate-600 p-1 pr-4",
+      default: "border border-slate-200 p-1",
+      dark: "border border-slate-600 p-1",
       buttonOnly: "",
-      active: "bg-blue-100 p-1 pr-4",
+      active: "bg-blue-100 p-1",
     },
     size: {
       fit: "w-fit",
@@ -117,27 +117,27 @@ const LeadingButton: React.FC<LeadingButtonProps> = ({
           stroke: "default",
         })}
       </span>
-      <div className={link ? "flex justify-between items-center w-full" : ""}>
-        {text && (
-          <Small className="h-fit text-ellipsis overflow-hidden whitespace-nowrap">
-            {text}
-          </Small>
-        )}
-        {link === "out" && (
-          <SquareArrowOutUpRight
-            className="stroke-slate-600"
-            stroke="default"
-            size={20}
-          />
-        )}
-        {link === "next" && (
-          <ChevronRight
-            className="stroke-slate-600"
-            stroke="default"
-            size={20}
-          />
-        )}
-      </div>
+      {text && (
+        <Small
+          className={
+            !link
+              ? "h-fit text-ellipsis overflow-hidden whitespace-nowrap"
+              : "h-fit text-ellipsis overflow-hidden whitespace-nowrap w-full text-start"
+          }
+        >
+          {text}
+        </Small>
+      )}
+      {link === "out" && (
+        <SquareArrowOutUpRight
+          className="stroke-slate-600 w-16"
+          stroke="default"
+          size={20}
+        />
+      )}
+      {link === "next" && (
+        <ChevronRight className="stroke-slate-600" stroke="default" size={20} />
+      )}
     </button>
   );
 };

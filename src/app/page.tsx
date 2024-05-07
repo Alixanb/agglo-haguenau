@@ -74,7 +74,6 @@ export default function Home() {
             </LeadingButton>
           </Grid>
         </SubSection>
-        <Button variant={"outline"}>Voir dans l&apos;agenda</Button>
       </Section>
       <ArticleBanner
         title="Inscription au marché"
