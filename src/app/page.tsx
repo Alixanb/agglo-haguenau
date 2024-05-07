@@ -6,16 +6,19 @@ import { LeadingButton } from "@/components/ui/LeadingButton";
 import { Article, ArticleBanner } from "@/components/widgets/Article";
 import { Main, Section, SubSection } from "@/components/layout/";
 import { Button } from "@/components/ui/button";
-import { Grid } from "@/components/widgets/Grid";
+import { Grid, GridSpan } from "@/components/widgets/Grid";
 import {
   Activity,
   ArrowUpRight,
   BusFront,
   CalendarDays,
   ExternalLink,
+  FileSearch,
   Guitar,
+  Library,
   Megaphone,
   Paintbrush,
+  Palette,
   Router,
   Shapes,
   ShoppingBag,
@@ -27,7 +30,6 @@ import {
   Trees,
   TriangleAlert,
   Users,
-  VenetianMask,
 } from "lucide-react";
 import NewsLetter from "@/components/misc/newsletter/NewsLetter";
 
@@ -47,11 +49,13 @@ export default function Home() {
       <Section>
         <H2>Accès rapides</H2>
         <SubSection>
-          <LeadingButton link="out" accent="blue">
-            <Router />
-            Mes services en ligne
-          </LeadingButton>
           <Grid size="sm">
+            <GridSpan>
+              <LeadingButton link="out" accent="blue">
+                <Router />
+                Mes services en ligne
+              </LeadingButton>
+            </GridSpan>
             <LeadingButton accent="orange">
               <TrafficCone />
               Info travaux
@@ -60,8 +64,6 @@ export default function Home() {
               <Trash2 />
               Info dechets
             </LeadingButton>
-          </Grid>
-          <Grid size="sm">
             <LeadingButton accent="blue">
               <SquareParking />
               Parkings
@@ -70,12 +72,12 @@ export default function Home() {
               <BusFront />
               RITMO
             </LeadingButton>
-          </Grid>
-          <LeadingButton link="out" accent="red">
-            <TriangleAlert />
-            Créer un signalement
-          </LeadingButton>
-          <Grid size="sm">
+            <GridSpan>
+              <LeadingButton link="out" accent="red">
+                <TriangleAlert />
+                Créer un signalement
+              </LeadingButton>
+            </GridSpan>
             <LeadingButton accent="yellow">
               <Megaphone />
               Alertes
@@ -84,6 +86,18 @@ export default function Home() {
               <Users />
               Espace Famille
             </LeadingButton>
+            <GridSpan>
+              <LeadingButton link="out" accent="sky">
+                <Library />
+                TILT - Bibilothèques
+              </LeadingButton>
+            </GridSpan>
+            <GridSpan>
+              <LeadingButton link="out" accent="purple">
+                <FileSearch />
+                Consultation citoyennes
+              </LeadingButton>
+            </GridSpan>
           </Grid>
         </SubSection>
         <SubSection>
@@ -133,7 +147,7 @@ export default function Home() {
         <SubSection>
           <Grid size="sm">
             <LeadingButton accent="blue">
-              <VenetianMask />
+              <Palette />
               Expositions
             </LeadingButton>
             <LeadingButton accent="yellow">

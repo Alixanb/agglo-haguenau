@@ -45,4 +45,38 @@ const Grid = React.forwardRef<
 ));
 Grid.displayName = "Grid";
 
-export { Grid };
+const gridSpanVariant = cva("", {
+  variants: {
+    size: {
+      "2": "col-span-2",
+      "3": "col-span-3",
+      "4": "col-span-4",
+      "5": "col-span-5",
+      "6": "col-span-6",
+    },
+  },
+  defaultVariants: {
+    size: "2",
+  },
+});
+
+/**
+ * GridSpan Component
+ *
+ * A component that spans multiple columns in a grid layout.
+ *
+ * @param size - The size variant of the grid span.
+ * @param props - Additional HTML attributes and variant props.
+ * @param ref - Forwarded ref to the underlying div element.
+ *
+ * @returns A div element representing the grid span.
+ */
+const GridSpan = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & VariantProps<typeof gridSpanVariant>
+>(({ children, size, ...props }, ref) => (
+  <div className={cn(gridSpanVariant({ size }))}>{children}</div>
+));
+GridSpan.displayName = "GridSpan";
+
+export { Grid, gridVariant, GridSpan };

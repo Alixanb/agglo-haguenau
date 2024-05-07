@@ -15,7 +15,7 @@ const leadingButtonVariants = cva("flex gap-3 rounded-md items-center ", {
     },
     size: {
       fit: "w-fit",
-      full: "w-full-3",
+      full: "w-full",
     },
   },
   defaultVariants: {
