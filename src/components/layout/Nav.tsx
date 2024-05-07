@@ -199,25 +199,25 @@ const Nav = React.forwardRef<HTMLElement, NavProps>(
           label="Actu"
           SVG={NavSVG.news}
           isActive={active == "news"}
-          href="./"
+          href="./news"
         />
         <NavElement
           label="Agenda"
           SVG={NavSVG.agenda}
           isActive={active == "agenda"}
-          href="./"
+          href="./agenda"
         />
         <NavElement
           label="Alertes"
           SVG={NavSVG.alert}
           isActive={active == "alert"}
-          href="./"
+          href="./alert"
         />
         <NavElement
           label="Paramètres"
           SVG={NavSVG.settings}
           isActive={active == "settings"}
-          href="./"
+          href="./settings"
         />
       </ul>
     </nav>
@@ -226,3 +226,4 @@ const Nav = React.forwardRef<HTMLElement, NavProps>(
 Nav.displayName = "Nav";
 
 export { Nav };
+export type { NavProps };

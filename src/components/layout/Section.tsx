@@ -1,6 +1,6 @@
 import { cn } from "@/lib/utils";
 import React from "react";
-import { Nav } from "./";
+import { Nav, NavProps } from "./";
 
 /**
  * Section Component
@@ -54,13 +54,13 @@ const SubSection: React.FC<React.HTMLAttributes<HTMLElement>> = (
  * @param props Additional HTML attributes to be passed to the main element.
  * @returns JSX.Element or React.HTMLAttributes<HTMLElement>.
  */
-const Main: React.FC<React.HTMLAttributes<HTMLElement>> = (
-  { className, children },
+const Main: React.FC<React.HTMLAttributes<HTMLElement> & NavProps> = (
+  { active, className, children },
   ...props
 ) => {
   return (
     <main className={cn(className, "flex flex-col gap-12 pb-20")} {...props}>
-      <Nav active="home" />
+      <Nav active={active} />
       {children}
     </main>
   );

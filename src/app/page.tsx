@@ -33,13 +33,9 @@ import {
 } from "lucide-react";
 import NewsLetter from "@/components/misc/newsletter/NewsLetter";
 
-const inter = Inter({
-  subsets: ["latin"],
-});
-
 export default function Home() {
   return (
-    <Main className={cn(" ", inter.className)}>
+    <Main active="home">
       <div className="flex flex-col ">
         <Small className="text-slate-400">Bienvenue, vous ête sur</Small>
         <H1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">

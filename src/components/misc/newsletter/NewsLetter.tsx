@@ -29,13 +29,13 @@ const NewsLetter = () => {
         </div>
       </SubSection>
       <div className="flex gap-2">
-        <LeadingButton accent="pink">
+        <LeadingButton accent="pink" size="fit">
           <Instagram />
         </LeadingButton>
-        <LeadingButton accentClass="bg-blue-600 stroke-white">
+        <LeadingButton accentClass="bg-blue-600 stroke-white" size="fit">
           <Facebook />
         </LeadingButton>
-        <LeadingButton accentClass="bg-sky-100 stroke-sky-600">
+        <LeadingButton accentClass="bg-sky-100 stroke-sky-600" size="fit">
           <Linkedin />
         </LeadingButton>
       </div>
