@@ -38,6 +38,7 @@ const leadingButtonIconVariants = cva("rounded-sm p-2", {
       yellow: "bg-yellow-100 stroke-yellow-600",
       orange: "bg-orange-100 stroke-orange-600",
       green: "bg-green-100 stroke-green-600",
+      pink: "bg-pink-100 stroke-pink-600",
       lime: "bg-lime-100 stroke-lime-600",
       purple: "bg-purple-100 stroke-purple-600",
     },
@@ -69,6 +70,7 @@ interface LeadingButtonProps
     VariantProps<typeof leadingButtonIconVariants> {
   src?: string;
   link?: "default" | "out" | "next" | null | undefined;
+  accentClass?: string;
 }
 
 /**
@@ -79,7 +81,7 @@ interface LeadingButtonProps
  * @param className Additional CSS classes for the button element.
  * @param variant Variant of the button (e.g., default, dark, active).
  * @param size Size of the button (e.g., default, full).
- * @param button Button variant (e.g., slate, dark, gray).
+ * @param accent Color of the button variant (e.g., slate, dark, gray).
  * @param children Child elements to be rendered inside the button. Must be a LucideReact SVG And a text
  * @param link Type of link associated with the button (e.g., default, out, next).
  * @param src Source URL for the button.
@@ -95,6 +97,7 @@ const LeadingButton: React.FC<LeadingButtonProps> = ({
   children,
   link,
   src,
+  accentClass,
   ...props
 }) => {
   const text = React.Children.toArray(children).find(
@@ -112,7 +115,7 @@ const LeadingButton: React.FC<LeadingButtonProps> = ({
       className={cn(leadingButtonVariants({ variant, size, className }))}
       {...props}
     >
-      <span className={cn(leadingButtonIconVariants({ accent }))}>
+      <span className={cn(leadingButtonIconVariants({ accent }), accentClass)}>
         {React.cloneElement(icon, {
           stroke: "default",
         })}

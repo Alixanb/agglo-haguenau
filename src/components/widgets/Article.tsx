@@ -11,7 +11,7 @@ const articleVariants = cva("relative flex flex-col gap-2 pb-4", {
   variants: {
     variant: {
       default: "",
-      border: "border border-slate-200 p-1",
+      outline: "border border-slate-200 p-2 rounded-md",
     },
   },
   defaultVariants: {
@@ -39,9 +39,9 @@ interface ArticleProps
   extends VariantProps<typeof articleVariants>,
     VariantProps<typeof articleImageVariants>,
     React.HTMLAttributes<HTMLDivElement> {
-  href: Url;
-  src: string;
   title: string;
+  href: Url;
+  src?: string;
   tags?: Array<string | number>;
 }
 
@@ -68,9 +68,9 @@ const Article = React.forwardRef<
       className,
       variant,
       imageSize,
-      href,
-      src,
       title,
+      src,
+      href,
       tags = ["Aucun tag"],
       ...props
     },
@@ -78,14 +78,16 @@ const Article = React.forwardRef<
   ) => (
     <article className={cn(articleVariants({ className, variant }))} {...props}>
       <Link href={href}>
-        <div className={cn(articleImageVariants({ imageSize }))}>
-          <Image src={src} alt="Image" layout="fill" objectFit="cover" />
-        </div>
-        <h3 className="text-lg w-full font-semibold text-black text-ellipsis overflow-hidden whitespace-nowrap tracking-tigt scroll-m-20">
+        {src && (
+          <div className={cn(articleImageVariants({ imageSize }))}>
+            <Image src={src} alt={title} layout="fill" objectFit="cover" />
+          </div>
+        )}
+        <h3 className="text-lg font-semibold tracking-tigt scroll-m-20">
           {title}
         </h3>
         {tags && (
-          <div className="flex gap-1 text-sm font-medium leading-none text-slate-400 pt-1">
+          <div className="flex flex-wrap gap-1 gap-y-2 text-sm leading-none text-slate-400 pt-1">
             {tags.map((item, i) => (
               <React.Fragment key={i}>
                 <p>{item}</p>
@@ -102,7 +104,7 @@ const Article = React.forwardRef<
 Article.displayName = "Article";
 
 // TailwindCSS class variants for the article element
-const articleBannerVariants = cva("relative flex flex-col gap-2 pb-4", {
+const articleBannerVariants = cva("relative flex flex-col gap-2", {
   variants: {
     variant: {
       default: "",
@@ -115,8 +117,7 @@ const articleBannerVariants = cva("relative flex flex-col gap-2 pb-4", {
 });
 
 interface ArticleBannerProps
-  extends VariantProps<typeof articleVariants>,
-    VariantProps<typeof articleImageVariants>,
+  extends VariantProps<typeof articleBannerVariants>,
     React.HTMLAttributes<HTMLDivElement> {
   href: Url;
   src: string;
@@ -128,16 +129,7 @@ const ArticleBanner = React.forwardRef<
   ArticleBannerProps
 >(
   (
-    {
-      className,
-      variant,
-      imageSize,
-      href,
-      src,
-      title,
-      tags = ["Aucun tag"],
-      ...props
-    },
+    { className, variant, href, src, title, tags = ["Aucun tag"], ...props },
     ref
   ) => (
     <article

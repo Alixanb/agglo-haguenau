@@ -59,7 +59,7 @@ const Main: React.FC<React.HTMLAttributes<HTMLElement>> = (
   ...props
 ) => {
   return (
-    <main className={cn(className, "flex flex-col gap-12")} {...props}>
+    <main className={cn(className, "flex flex-col gap-12 pb-20")} {...props}>
       <Nav active="home" />
       {children}
     </main>

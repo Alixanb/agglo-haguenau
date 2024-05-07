@@ -184,7 +184,7 @@ interface NavProps extends React.HTMLAttributes<HTMLElement> {
 const Nav = React.forwardRef<HTMLElement, NavProps>(
   ({ active, ...props }, ref) => (
     <nav
-      className="flex fixed bottom-0 left-0 bg-slate-50 w-full rounded-t-3xl"
+      className="flex fixed bottom-0 left-0 bg-slate-50 w-full rounded-t-3xl z-50"
       {...props}
       ref={ref}
     >
