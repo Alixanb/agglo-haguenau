@@ -149,7 +149,7 @@ interface NavElement extends React.HTMLAttributes<HTMLLIElement> {
  */
 const NavElement = React.forwardRef<HTMLLIElement, NavElement>(
   ({ className, label, isActive = false, SVG, href, ...props }, ref) => (
-    <li className={cn(className, " w-full")} {...props} ref={ref}>
+    <li className={cn(className, "w-full z-50")} {...props} ref={ref}>
       <Link
         href={href}
         className="flex flex-col items-center gap-2 w-full h-16 justify-center fill-slate-800 text-slate-800"

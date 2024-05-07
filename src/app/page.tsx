@@ -1,13 +1,12 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
 import { cn } from "@/lib/utils";
-import ElemGrid from "@/components/widgets/Grid";
 import { H1, H2, H3, P, Small } from "@/components/typos";
 import { LeadingButton } from "@/components/ui/LeadingButton";
 import { Article, ArticleBanner } from "@/components/widgets/Article";
 import { Main, Section, SubSection } from "@/components/layout/";
 import { Button } from "@/components/ui/button";
-import Grid from "@/components/widgets/Grid";
+import { Grid } from "@/components/widgets/Grid";
 import { HomeIcon } from "lucide-react";
 
 const inter = Inter({
@@ -30,7 +29,7 @@ export default function Home() {
           src="https://placehold.co/400x400"
           href="./"
         />
-        <ElemGrid>
+        <Grid>
           <Article
             title="Inscription au Rendez-vous de la Jeunesse"
             src="https://placehold.co/400x400"
@@ -43,7 +42,7 @@ export default function Home() {
             tags={["This", "tag"]}
             href="./"
           ></Article>
-        </ElemGrid>
+        </Grid>
         <Button variant={"outline"}>Voir dans l&apos;agenda</Button>
       </Section>
     </Main>
