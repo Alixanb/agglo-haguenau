@@ -5,24 +5,27 @@ import { P, Small } from "../typos";
 import { ChevronRight, SquareArrowOutUpRight } from "lucide-react";
 
 // Buton classes
-const leadingButtonVariants = cva("flex gap-3 rounded-md items-center ", {
-  variants: {
-    variant: {
-      default: "border border-border p-1 ",
-      dark: "border border-border p-1",
-      buttonOnly: "",
-      active: "bg-blue-100 p-1",
+const leadingButtonVariants = cva(
+  "flex gap-3 rounded-md items-center bg-slate-50",
+  {
+    variants: {
+      variant: {
+        default: "border border-border p-1 ",
+        dark: "border border-border p-1",
+        buttonOnly: "",
+        active: "bg-blue-100 p-1",
+      },
+      size: {
+        fit: "w-fit",
+        full: "w-full",
+      },
     },
-    size: {
-      fit: "w-fit",
-      full: "w-full",
+    defaultVariants: {
+      variant: "default",
+      size: "full",
     },
-  },
-  defaultVariants: {
-    variant: "default",
-    size: "full",
-  },
-});
+  }
+);
 
 //Icon classes
 const leadingButtonIconVariants = cva("rounded-sm p-2", {

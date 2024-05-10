@@ -75,7 +75,10 @@ const H3: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
 }) => {
   return (
     <h3
-      className={cn(className, "scroll-m-20 text-lg font-medium text-primary")}
+      className={cn(
+        className,
+        "scroll-m-20 text-lg font-semibold text-primary"
+      )}
       {...props}
     >
       {children}

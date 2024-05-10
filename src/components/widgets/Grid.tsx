@@ -12,6 +12,7 @@ const gridVariant = cva("grid grid-flow-row  wrap", {
       lg: "gap-6",
     },
     cols: {
+      "1": "grid-cols-1",
       "2": "grid-cols-2",
       "4": "grid-cols-4",
       "6": "grid-cols-6",

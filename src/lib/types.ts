@@ -1,0 +1,1 @@
+type SAHCategory = "spéctacle" | "évenement";
