@@ -7,38 +7,32 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Computer, Moon, Sun } from "lucide-react";
+import { CircleX, Computer, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { useEffect, useState } from "react";
 import { LeadingButton } from "../ui/LeadingButton";
-
-interface ThemeTradProps {
-  light: string;
-  dark: string;
-  system: string;
-}
+import { Skeleton } from "../ui/skeleton";
 
 type Theme = "light" | "dark" | "system";
 
 const themeTraduction: {
   value: Theme;
   translation: string;
-  Icon?: React.ReactNode;
+  icon: React.ReactNode;
 }[] = [
-  { value: "light", translation: "Mode clair", Icon: <Sun /> },
-  { value: "dark", translation: "Mode sombre", Icon: <Moon /> },
+  { value: "light", translation: "Mode clair", icon: <Sun /> },
+  { value: "dark", translation: "Mode sombre", icon: <Moon /> },
   {
     value: "system",
     translation: "Dépendamment du système",
-    Icon: <Computer />,
+    icon: <Computer />,
   },
 ];
 
 const getThemeTranslation = (theme: string | undefined) => {
-  return themeTraduction.find((item) => item.value === theme);
+  const res = themeTraduction.find((item) => item.value === theme);
+  return res ? res : { translation: "Thème non trouvé", icon: <CircleX /> };
 };
-
-import { useEffect, useState } from "react";
-import { Skeleton } from "../ui/skeleton";
 
 export function ThemeSelect() {
   const { theme, setTheme } = useTheme();
@@ -58,7 +52,7 @@ export function ThemeSelect() {
   return (
     <div className="p-1 border border-border rounded flex gap-2">
       <LeadingButton size="fit">
-        {getThemeTranslation(theme)?.Icon}
+        {getThemeTranslation(theme)?.icon}
       </LeadingButton>
       <Select
         onValueChange={(value) => {
@@ -66,11 +60,7 @@ export function ThemeSelect() {
         }}
       >
         <SelectTrigger className="w-full border-none">
-          <SelectValue
-            placeholder={
-              getThemeTranslation(theme)?.translation && "Thème non trouvé"
-            }
-          />
+          <SelectValue placeholder={getThemeTranslation(theme)?.translation} />
         </SelectTrigger>
         <SelectContent>
           {themeTraduction.map((item, i) => (
