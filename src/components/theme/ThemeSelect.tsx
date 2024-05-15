@@ -51,7 +51,7 @@ export function ThemeSelect() {
 
   return (
     <div className="p-1 border border-border rounded flex gap-2">
-      <LeadingButton size="fit">
+      <LeadingButton size="fit" accent="yellow">
         {getThemeTranslation(theme)?.icon}
       </LeadingButton>
       <Select

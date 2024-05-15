@@ -1,3 +1,4 @@
+import NewsLetter from "@/components/features/newsletter/NewsLetter";
 import { BasicHeader, Main } from "@/components/layout/";
 import { ThemeSelect } from "@/components/theme/ThemeSelect";
 import { LeadingButton } from "@/components/ui/LeadingButton";
@@ -13,6 +14,7 @@ const Settings = () => {
         Paramètres
       </BasicHeader>
       <ThemeSelect />
+      <NewsLetter />
     </Main>
   );
 };

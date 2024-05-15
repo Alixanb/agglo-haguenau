@@ -35,7 +35,7 @@ const BannerHeader: React.FC<BannerHeaderProps> = ({
       <div className="flex justify-between w-full items-end z-10">
         <div className="flex flex-col">
           <Small className="text-muted-foreground">{subTitle}</Small>
-          <H1 className="text-primary-foreground">{title}</H1>
+          <H1 className="text-white">{title}</H1>
         </div>
         <div className="flex gap-2">
           <LeadingButton size="fit" accent="slate">
