@@ -18,14 +18,22 @@ const Agenda = () => {
       </BasicHeader>
       <Section>
         <H2>En ce moment</H2>
-        <Grid cols="1">
+        <Grid cols="1" size="sm">
           <AgendaCard
-            title="test"
+            title="Le chemin des cîmes"
             date={["15/06"]}
             period={["16H00", "18H00"]}
             href="#"
             tag="spéctacle"
-            src="./"
+            src="https://placehold.co/401x400"
+          />
+          <AgendaCard
+            title="Le chemin des cîmes"
+            date={["15/06"]}
+            period={["16H00", "18H00"]}
+            href="#"
+            tag="spéctacle"
+            src="https://placehold.co/401x400"
           />
         </Grid>
       </Section>

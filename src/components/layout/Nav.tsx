@@ -1,8 +1,8 @@
 import { cn } from "@/lib/utils";
+import { Url } from "next/dist/shared/lib/router/router";
+import Link from "next/link";
 import React from "react";
 import { Small } from "../typos";
-import Link from "next/link";
-import { Url } from "next/dist/shared/lib/router/router";
 
 interface NavSVG {
   [key: string]: {
@@ -152,7 +152,7 @@ const NavElement = React.forwardRef<HTMLLIElement, NavElement>(
     <li className={cn(className, "w-full z-50")} {...props} ref={ref}>
       <Link
         href={href}
-        className="flex flex-col items-center gap-2 w-full h-16 justify-center fill-slate-800 dark:fill-slate-400 "
+        className="flex flex-col items-center gap-2 w-full h-16 justify-center fill-primary"
       >
         {isActive ? (
           <>
@@ -184,7 +184,7 @@ interface NavProps extends React.HTMLAttributes<HTMLElement> {
 const Nav = React.forwardRef<HTMLElement, NavProps>(
   ({ active, ...props }, ref) => (
     <nav
-      className="flex fixed bottom-0 left-0 bg-slate-50 dark:bg-slate-900 w-full rounded-t-3xl z-50"
+      className="flex fixed bottom-0 left-0 bg-card border-x border-t border-border w-full rounded-t-3xl z-50"
       {...props}
       ref={ref}
     >

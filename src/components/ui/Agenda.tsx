@@ -21,37 +21,47 @@ const AgendaCard: React.FC<AgendaCardProps> = (
   ref
 ) => {
   const formatedDate = date[1]
-    ? `Du ${date[0]} au ${date[1]}`
-    : `Le ${date[0]}`;
+    ? `du ${date[0]} au ${date[1]}`
+    : `le ${date[0]}`;
   return (
     <Link href={href} ref={ref}>
       <article
         className={cn(
-          "rounded-md border border-slate-200 bg-slate-50 p-2 w-full flex flex-col gap-2",
+          "rounded-xl  border border-slate-200 bg-slate-50 p-2 flex justify-between gap-4 items-stretch ",
           className
         )}
         {...props}
       >
-        <H3>{title}</H3>
-        <div className="flex flex-col gap-1">
-          <div className="flex gap-2 items-center">
-            <CalendarDays
-              size={12}
-              stroke="default"
-              className="stroke-slate-600"
-            />
-            <Small>{formatedDate}</Small>
+        <div className="flex flex-col gap-4 grow">
+          <H3>{title}</H3>
+          <div className="flex flex-col gap-1">
+            <div className="flex gap-2 items-center">
+              <CalendarDays
+                size={12}
+                stroke="default"
+                className="stroke-slate-400"
+              />
+              <Small className="text-slate-400">{formatedDate}</Small>
+            </div>
+            {period && (
+              <Small className="text-blue-400 flex gap-1 items-center">
+                {period[0]}
+                <ArrowRight size={14} />
+                {period[1]}
+              </Small>
+            )}
           </div>
-          {period && (
-            <Small className="text-blue-400 flex gap-1 items-center">
-              {period[0]}
-              <ArrowRight size={14} />
-              {period[1]}
-            </Small>
-          )}
+          <SAHTag tag="spéctacle" />
         </div>
-        <SAHTag tag="spéctacle" className="mt-4" />
-        <Image src={src} alt="Image" layout="fill" objectFit="cover" />
+        <div className="w-36 relative justify-items-stretch self-stretch">
+          <Image
+            src={src}
+            alt="Image"
+            layout="fill"
+            objectFit="cover"
+            className="rounded-md h-full"
+          />
+        </div>
       </article>
     </Link>
   );

@@ -1,12 +1,12 @@
 import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
-import React from "react";
-import { P, Small } from "../typos";
 import { ChevronRight, SquareArrowOutUpRight } from "lucide-react";
+import React from "react";
+import { P } from "../typos";
 
 // Buton classes
 const leadingButtonVariants = cva(
-  "flex gap-3 rounded-md items-center bg-slate-50",
+  "flex gap-3 rounded-md items-center bg-card",
   {
     variants: {
       variant: {
@@ -16,7 +16,7 @@ const leadingButtonVariants = cva(
         active: "bg-blue-100 p-1",
       },
       size: {
-        fit: "w-fit",
+        fit: "size-fit",
         full: "w-full",
       },
     },
@@ -129,15 +129,15 @@ const LeadingButton: React.FC<LeadingButtonProps> = ({
         })}
       </span>
       {text && (
-        <Small
+        <P
           className={
             !link
-              ? "h-fit text-ellipsis overflow-hidden whitespace-nowrap"
-              : "h-fit text-ellipsis overflow-hidden whitespace-nowrap w-full text-start"
+              ? "text-sm h-fit font-medium text-ellipsis overflow-hidden whitespace-nowrap"
+              : "text-sm font-medium h-fit text-ellipsis overflow-hidden whitespace-nowrap w-full text-start"
           }
         >
           {text}
-        </Small>
+        </P>
       )}
       {link === "out" && (
         <SquareArrowOutUpRight
@@ -153,4 +153,4 @@ const LeadingButton: React.FC<LeadingButtonProps> = ({
   );
 };
 
-export { LeadingButton, leadingButtonVariants, leadingButtonIconVariants };
+export { LeadingButton, leadingButtonIconVariants, leadingButtonVariants };

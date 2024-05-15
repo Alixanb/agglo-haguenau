@@ -1,5 +1,4 @@
 import { cn } from "@/lib/utils";
-import { VariantProps } from "class-variance-authority";
 import React from "react";
 
 /**
@@ -20,8 +19,8 @@ const H1: React.FC<React.HTMLAttributes<HTMLHeadingElement>> = ({
   return (
     <h1
       className={cn(
-        className,
-        "scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-primary"
+        "scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl text-primary",
+        className
       )}
       {...props}
     >

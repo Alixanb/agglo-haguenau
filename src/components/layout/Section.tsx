@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import React from "react";
+import React, { PropsWithChildren } from "react";
 import { Nav, NavProps } from "./";
 
 /**
@@ -44,6 +44,11 @@ const SubSection: React.FC<React.HTMLAttributes<HTMLElement>> = (
   );
 };
 
+export interface MainProps
+  extends React.HTMLAttributes<HTMLElement>,
+    NavProps,
+    ContainerProps {}
+
 /**
  * Main Component
  *
@@ -54,16 +59,34 @@ const SubSection: React.FC<React.HTMLAttributes<HTMLElement>> = (
  * @param props Additional HTML attributes to be passed to the main element.
  * @returns JSX.Element or React.HTMLAttributes<HTMLElement>.
  */
-const Main: React.FC<React.HTMLAttributes<HTMLElement> & NavProps> = (
-  { active, className, children },
+const Main: React.FC<MainProps> = (
+  { isRoot = false, active, className, children },
   ...props
 ) => {
   return (
-    <main className={cn(className, "flex flex-col gap-12 pb-20")} {...props}>
+    <>
+      <Container isRoot={isRoot}>
+        <main
+          className={cn(className, "flex flex-col gap-12 pb-20")}
+          {...props}
+        >
+          {children}
+        </main>
+      </Container>
       <Nav active={active} />
-      {children}
-    </main>
+    </>
   );
 };
 
-export { Section, SubSection, Main };
+interface ContainerProps extends PropsWithChildren {
+  isRoot?: boolean;
+}
+
+function Container({ isRoot = false, children }: Readonly<ContainerProps>) {
+  const mt = isRoot ? "mt-8" : "mt-16";
+
+  return <div className={cn("m-5 mb-8 ", mt)}>{children}</div>;
+}
+
+export { Container, Main, Section, SubSection };
+export type { ContainerProps };

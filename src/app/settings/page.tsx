@@ -1,8 +1,7 @@
-import { Inter } from "next/font/google";
-import { cn } from "@/lib/utils";
+import { BasicHeader, Main } from "@/components/layout/";
+import { ThemeSelect } from "@/components/theme/ThemeSelect";
 import { LeadingButton } from "@/components/ui/LeadingButton";
-import { BasicHeader, Main, Section, SubSection } from "@/components/layout/";
-import { Bell, Newspaper, SettingsIcon } from "lucide-react";
+import { SettingsIcon } from "lucide-react";
 
 const Settings = () => {
   return (
@@ -13,6 +12,7 @@ const Settings = () => {
         </LeadingButton>
         Paramètres
       </BasicHeader>
+      <ThemeSelect />
     </Main>
   );
 };
