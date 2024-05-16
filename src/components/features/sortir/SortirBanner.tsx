@@ -19,7 +19,7 @@ const Sortir = () => {
             className="absolute w-full h-full "
           />
         </div>
-        <Button variant="default" className="gap-2">
+        <Button variant="outline" className="gap-2 w-full">
           <Globe size={16} /> Voir sur le web
         </Button>
       </SubSection>

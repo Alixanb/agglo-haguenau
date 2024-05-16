@@ -58,6 +58,7 @@ export function ThemeSelect() {
         onValueChange={(value) => {
           setTheme(value);
         }}
+        defaultValue={theme}
       >
         <SelectTrigger className="w-full border-none">
           <SelectValue placeholder={getThemeTranslation(theme)?.translation} />

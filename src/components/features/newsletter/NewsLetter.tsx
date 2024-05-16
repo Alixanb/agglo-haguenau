@@ -1,13 +1,11 @@
+import { Section, SubSection } from "@/components/layout";
 import { H2 } from "@/components/typos";
-import Image from "next/image";
-import { Section } from "@/components/layout";
-import React from "react";
-import newsletterImage from "./newsletter.jpg";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { SubSection } from "@/components/layout";
+import { Input } from "@/components/ui/input";
 import { LeadingButton } from "@/components/ui/LeadingButton";
-import { Facebook, Instagram, Linkedin, Trash2 } from "lucide-react";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
+import Image from "next/image";
+import newsletterImage from "./newsletter.jpg";
 
 const NewsLetter = () => {
   return (
@@ -25,7 +23,9 @@ const NewsLetter = () => {
         </div>
         <div className="flex w-full max-w-sm items-center space-x-2">
           <Input type="email" placeholder="Email" />
-          <Button type="submit">Subscribe</Button>
+          <Button type="submit" variant="outline">
+            Subscribe
+          </Button>
         </div>
       </SubSection>
       <div className="flex gap-2">
