@@ -1,11 +1,10 @@
-import { cn } from "@/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 
 interface SAHTagProps
   extends React.HTMLAttributes<HTMLDivElement>,
     VariantProps<typeof SAHTagVariants> {
-  tag: SAHCategory;
+  tag: string;
 }
 
 const SAHTagVariants = cva("capitalize", {

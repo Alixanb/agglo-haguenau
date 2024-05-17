@@ -1,6 +1,6 @@
 import { Product } from "@/types/entity";
 
-export const getProductsAction = async () => {
+export const getProductsAction = async (): Promise<Product[] | undefined> => {
   try {
     const res = await fetch("/api/lei", {
       headers: {
@@ -12,8 +12,8 @@ export const getProductsAction = async () => {
     return products.reverse();
   } catch (e) {
     console.error(e);
-  } finally {
   }
+  return undefined;
 };
 
 export const productDateStringToDate = (date: Product["date_debut"]) => {
@@ -40,9 +40,10 @@ export const extractActualProductsAction = (products: Product[], now: Date) => {
   let actualProducts: Product[] = [];
 
   products.map((product, i) => {
+    // console.log(product.date_fin > now, product.date_debut);
     //Push the event only if the event started and haven't ended yet
     if (
-      productDateStringToDate(product.date_fin) > now ||
+      productDateStringToDate(product.date_fin) > now &&
       productDateStringToDate(product.date_debut) < now
     ) {
       actualProducts.push(product);
