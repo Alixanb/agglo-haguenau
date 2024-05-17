@@ -1,5 +1,6 @@
 "use client";
 
+import { Spinner } from "@/components/core/Loader";
 import { BasicHeader, Main, Section } from "@/components/layout/";
 import { H2 } from "@/components/typos";
 import AgendaCard from "@/components/ui/Agenda";
@@ -13,7 +14,6 @@ import {
   extractActualProductsAction,
   getProductsAction,
 } from "./products.action";
-import { Spinner } from "@/components/core/Loader";
 
 const Agenda = () => {
   const [isLoading, setLoading] = useState(true);
@@ -56,7 +56,7 @@ const Agenda = () => {
       <Section>
         <H2>En ce moment</H2>
         <Grid cols="1" size="sm">
-          {actualProducts ? (
+          {false ? (
             actualProducts.map((product, i) => {
               const tags: string[] = [];
               product.criteres.map((critere) => tags.push(critere.nom));

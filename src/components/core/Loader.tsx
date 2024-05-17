@@ -12,8 +12,10 @@ const AlignLoader: React.FC<AlignLoaderProps> = ({
   ...props
 }) => {
   return (
-    <div className={cn("", className)} {...props}>
-      {children}
+    <div className="size-full flex justify-center items-center min-h-96">
+      <div className={className} {...props}>
+        {children}
+      </div>
     </div>
   );
 };
