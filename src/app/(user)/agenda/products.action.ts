@@ -16,4 +16,48 @@ export const getProductsAction = async () => {
   }
 };
 
-export const extractActualProductsAction = async (products: Product[]) => {};
+export const productDateStringToDate = (date: Product["date_debut"]) => {
+  const [day, month, year] = date.split("/").map(Number);
+
+  return new Date(year, month - 1, day);
+};
+
+export const getProductsNotDeprecatedAction = (
+  products: Product[],
+  now: Date
+) => {
+  let productsNotDeprecated: Product[] = [];
+
+  products.map((product, i) => {
+    if (productDateStringToDate(product.date_debut) < now) {
+      productsNotDeprecated.push(product);
+    }
+  });
+  return productsNotDeprecated;
+};
+
+export const extractActualProductsAction = (products: Product[], now: Date) => {
+  let actualProducts: Product[] = [];
+
+  products.map((product, i) => {
+    //Push the event only if the event started and haven't ended yet
+    if (
+      productDateStringToDate(product.date_fin) > now ||
+      productDateStringToDate(product.date_debut) < now
+    ) {
+      actualProducts.push(product);
+    }
+  });
+
+  return actualProducts;
+};
+
+export const deleteIntersectingProducts = (
+  notDeprecatedProducts: Product[],
+  actualProducts: Product[]
+) => {
+  const identifierSet = new Set(actualProducts.map((product) => product.id));
+  return notDeprecatedProducts.filter(
+    (product) => !identifierSet.has(product.id)
+  );
+};
