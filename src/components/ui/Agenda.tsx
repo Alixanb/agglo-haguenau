@@ -1,7 +1,6 @@
 import { cn } from "@/lib/utils";
 import { ArrowRight, CalendarDays } from "lucide-react";
 import { Url } from "next/dist/shared/lib/router/router";
-import Image from "next/image";
 import Link from "next/link";
 import React, { forwardRef } from "react";
 import { H3, Small } from "../typos";
@@ -24,7 +23,7 @@ const AgendaCard = forwardRef<HTMLAnchorElement, AgendaCardProps>(
       <Link href={href} ref={ref}>
         <article
           className={cn(
-            "rounded-xl  border border-slate-200 bg-slate-50 p-2 flex justify-between gap-4 items-stretch ",
+            "rounded border border-border bg-card p-2 flex justify-between gap-4 items-stretch ",
             className
           )}
           {...props}
@@ -36,28 +35,26 @@ const AgendaCard = forwardRef<HTMLAnchorElement, AgendaCardProps>(
                 <CalendarDays
                   size={12}
                   stroke="default"
-                  className="stroke-slate-400"
+                  className="stroke-muted-foreground"
                 />
-                <Small className="text-slate-400">{formatedDate}</Small>
+                <Small className="text-muted-foreground">{formatedDate}</Small>
               </div>
-              {period && (
-                <Small className="text-blue-400 flex gap-1 items-center">
+              {period && period[0] && period[1] && (
+                <Small className="text-green-400 flex gap-1 items-center">
                   {period[0]}
                   <ArrowRight size={14} />
                   {period[1]}
                 </Small>
               )}
-              {place && <Small>{place}</Small>}
+              {place && <Small className="uppercase py-1">{place}</Small>}
             </div>
           </div>
           {src && (
             <div className="w-36 relative justify-items-stretch self-stretch">
-              <Image
+              <img
                 src={src}
-                alt="Image"
-                layout="fill"
-                objectFit="cover"
-                className="rounded-md h-full"
+                alt={title}
+                className="rounded-md h-full object-cover aspect-square"
               />
             </div>
           )}

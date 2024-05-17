@@ -40,7 +40,6 @@ export const extractActualProductsAction = (products: Product[], now: Date) => {
   let actualProducts: Product[] = [];
 
   products.map((product, i) => {
-    // console.log(product.date_fin > now, product.date_debut);
     //Push the event only if the event started and haven't ended yet
     if (
       productDateStringToDate(product.date_fin) > now &&
@@ -55,8 +54,12 @@ export const extractActualProductsAction = (products: Product[], now: Date) => {
 
 export const deleteIntersectingProducts = (
   notDeprecatedProducts: Product[],
-  actualProducts: Product[]
+  actualProducts: Product[] | undefined
 ) => {
+  if (!actualProducts) {
+    return notDeprecatedProducts;
+  }
+
   const identifierSet = new Set(actualProducts.map((product) => product.id));
   return notDeprecatedProducts.filter(
     (product) => !identifierSet.has(product.id)
