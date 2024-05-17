@@ -12,10 +12,11 @@ import { Nav, NavProps } from "./";
  * @param props Additional HTML attributes to be passed to the section element.
  * @returns JSX.Element or React.HTMLAttributes<HTMLElement>.
  */
-const Section: React.FC<React.HTMLAttributes<HTMLElement>> = (
-  { className, children },
+const Section: React.FC<React.HTMLAttributes<HTMLElement>> = ({
+  className,
+  children,
   ...props
-) => {
+}) => {
   return (
     <section className={cn(className, "flex flex-col gap-4")} {...props}>
       {children}
@@ -33,10 +34,11 @@ const Section: React.FC<React.HTMLAttributes<HTMLElement>> = (
  * @param props Additional HTML attributes to be passed to the div element.
  * @returns JSX.Element or React.HTMLAttributes<HTMLElement>.
  */
-const SubSection: React.FC<React.HTMLAttributes<HTMLElement>> = (
-  { className, children },
+const SubSection: React.FC<React.HTMLAttributes<HTMLElement>> = ({
+  className,
+  children,
   ...props
-) => {
+}) => {
   return (
     <div className={cn(className, "flex flex-col gap-2")} {...props}>
       {children}
@@ -59,10 +61,13 @@ export interface MainProps
  * @param props Additional HTML attributes to be passed to the main element.
  * @returns JSX.Element or React.HTMLAttributes<HTMLElement>.
  */
-const Main: React.FC<MainProps> = (
-  { isRoot = false, active, className, children },
+const Main: React.FC<MainProps> = ({
+  isRoot = false,
+  active,
+  className,
+  children,
   ...props
-) => {
+}) => {
   return (
     <>
       <Container isRoot={isRoot}>
