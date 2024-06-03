@@ -33,6 +33,7 @@ const Agenda = () => {
   const fetchData = async () => {
     setLoading(true);
     const products = await getProductsAction();
+    toast.error("Aucun évenement trouvé");
 
     if (!products) {
       toast.error("Aucun évenement trouvé");
@@ -63,74 +64,78 @@ const Agenda = () => {
         </LeadingButton>
         Agenda
       </BasicHeader>
-      <Section>
-        <H2>En ce moment</H2>
-        <Grid cols="1" size="sm">
-          {actualProducts ? (
-            actualProducts.map((product, i) => {
-              const tags: string[] = [];
-              let src = undefined;
-              product.criteres.map((critere) => {
-                critere.id === 1900421 ? (src = critere.valeur) : null;
-              });
+      {products && (
+        <>
+          <Section>
+            <H2>En ce moment</H2>
+            <Grid cols="1" size="sm">
+              {actualProducts ? (
+                actualProducts.map((product, i) => {
+                  const tags: string[] = [];
+                  let src = undefined;
+                  product.criteres.map((critere) => {
+                    critere.id === 1900421 ? (src = critere.valeur) : null;
+                  });
 
-              return (
-                <AgendaCard
-                  key={product.id}
-                  title={product.nom}
-                  date={[product.date_debut, product.date_fin]}
-                  period={[
-                    product.horaires[0].heures[0].heure_debut,
-                    product.horaires[0].heures[0].heure_fin,
-                  ]}
-                  href={
-                    "https://www.haguenau.fr/fr/calendrier-des-evenements/" +
-                    product.id
-                  }
-                  place={product.coordonnees.libelle_commune}
-                  src={src}
-                />
-              );
-            })
-          ) : (
-            <Spinner />
-          )}
-        </Grid>
-      </Section>
-      <Section>
-        <H2>À venir</H2>
-        <Grid cols="1" size="sm">
-          {comingProducts ? (
-            comingProducts.map((product, i) => {
-              const tags: string[] = [];
-              let src = undefined;
-              product.criteres.map((critere) => {
-                critere.id === 1900421 ? (src = critere.valeur) : null;
-              });
+                  return (
+                    <AgendaCard
+                      key={product.id}
+                      title={product.nom}
+                      date={[product.date_debut, product.date_fin]}
+                      period={[
+                        product.horaires[0].heures[0].heure_debut,
+                        product.horaires[0].heures[0].heure_fin,
+                      ]}
+                      href={
+                        "https://www.haguenau.fr/fr/calendrier-des-evenements/" +
+                        product.id
+                      }
+                      place={product.coordonnees.libelle_commune}
+                      src={src}
+                    />
+                  );
+                })
+              ) : (
+                <Spinner />
+              )}
+            </Grid>
+          </Section>
+          <Section>
+            <H2>À venir</H2>
+            <Grid cols="1" size="sm">
+              {comingProducts ? (
+                comingProducts.map((product, i) => {
+                  const tags: string[] = [];
+                  let src = undefined;
+                  product.criteres.map((critere) => {
+                    critere.id === 1900421 ? (src = critere.valeur) : null;
+                  });
 
-              return (
-                <AgendaCard
-                  key={product.id}
-                  title={product.nom}
-                  date={[product.date_debut, product.date_fin]}
-                  period={[
-                    product.horaires[0].heures[0].heure_debut,
-                    product.horaires[0].heures[0].heure_fin,
-                  ]}
-                  href={
-                    "https://www.haguenau.fr/fr/calendrier-des-evenements/" +
-                    product.id
-                  }
-                  place={product.coordonnees.libelle_commune}
-                  src={src}
-                />
-              );
-            })
-          ) : (
-            <Spinner />
-          )}
-        </Grid>
-      </Section>
+                  return (
+                    <AgendaCard
+                      key={product.id}
+                      title={product.nom}
+                      date={[product.date_debut, product.date_fin]}
+                      period={[
+                        product.horaires[0].heures[0].heure_debut,
+                        product.horaires[0].heures[0].heure_fin,
+                      ]}
+                      href={
+                        "https://www.haguenau.fr/fr/calendrier-des-evenements/" +
+                        product.id
+                      }
+                      place={product.coordonnees.libelle_commune}
+                      src={src}
+                    />
+                  );
+                })
+              ) : (
+                <Spinner />
+              )}
+            </Grid>
+          </Section>
+        </>
+      )}
     </Main>
   );
 };

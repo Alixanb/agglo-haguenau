@@ -11,7 +11,17 @@ const Providers = (props: PropsWithChildren) => {
       enableSystem
       disableTransitionOnChange
     >
-      <Toaster />
+      <Toaster
+        toastOptions={{
+          className: "bg-card border border-border text-primary fill-green-400",
+          style: { marginBottom: "5rem", fill: "green !important" },
+          classNames: {
+            toast: "bg-blue-400",
+            title: "text-primary",
+            description: "text-muted-foreground",
+          },
+        }}
+      />
       <ThemeWrapper>{props.children}</ThemeWrapper>
     </ThemeProvider>
   );
