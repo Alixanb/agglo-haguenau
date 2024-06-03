@@ -1,8 +1,8 @@
 import NewsLetter from "@/components/features/newsletter/NewsLetter";
-import { BasicHeader, Main } from "@/components/layout/";
+import { BasicHeader, Main, SubSection } from "@/components/layout/";
 import { ThemeSelect } from "@/components/theme/ThemeSelect";
 import { LeadingButton } from "@/components/ui/LeadingButton";
-import { SettingsIcon } from "lucide-react";
+import { SettingsIcon, Shield } from "lucide-react";
 
 const Settings = () => {
   return (
@@ -13,7 +13,13 @@ const Settings = () => {
         </LeadingButton>
         Paramètres
       </BasicHeader>
-      <ThemeSelect />
+      <SubSection>
+        <ThemeSelect />
+        <LeadingButton accent="purple" src="/dashboard">
+          <Shield />
+          Espace administrateur
+        </LeadingButton>
+      </SubSection>
       <NewsLetter />
     </Main>
   );

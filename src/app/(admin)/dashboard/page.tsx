@@ -1,43 +1,38 @@
 "use client";
 
-import AuthForm from "@/components/admin/AuthForm";
+import { NotificationDataTable } from "@/components/admin/NotificationTable";
 import { Main } from "@/components/layout";
-import { Prisma } from "@prisma/client";
-import { useRouter } from "next/navigation";
+import { H1 } from "@/components/typos";
+import { Notification } from "@prisma/client";
+import { Plus } from "lucide-react";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getAllNotificationAction } from "./notification.action";
 
 const RootPage = () => {
-  const [password, setPassword] = useState("");
-  const [notifications, setNotificiations] =
-    useState<Prisma.PromiseReturnType<typeof getAllNotificationAction>>();
-  const router = useRouter();
-
-  const handleAuthSubmit = (pass: string) => {
-    if (pass === process.env.NEXT_PUBLIC_ADMIN_PASS) {
-      setPassword(pass);
-    } else {
-      alert("Mot de passe incorrect, merci de réessayer");
-    }
-  };
+  const [notifications, setNotifications] = useState<Notification[]>([]);
 
   useEffect(() => {
-    if (!password) {
-      return;
-    }
-
     const fetchNotifications = async () => {
-      setNotificiations(await getAllNotificationAction());
+      setNotifications(await getAllNotificationAction());
     };
 
     fetchNotifications();
-  }, [password]);
+  }, []);
 
-  if (password !== process.env.NEXT_PUBLIC_ADMIN_PASS && false) {
-    return <AuthForm onSubmit={handleAuthSubmit} />;
-  }
-
-  return <Main>Secure Content Here</Main>;
+  return (
+    <Main>
+      <H1>Dashboard des notifications</H1>
+      <Link
+        href="/dashboard/new"
+        className="flex gap-2 px-4 py-2 bg-primary-foreground border border-border rounded w-fit"
+      >
+        <Plus />
+        Ajouter une notification
+      </Link>
+      <NotificationDataTable data={notifications} />
+    </Main>
+  );
 };
 
 export default RootPage;
