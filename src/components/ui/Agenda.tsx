@@ -49,15 +49,17 @@ const AgendaCard = forwardRef<HTMLAnchorElement, AgendaCardProps>(
               {place && <Small className="uppercase py-1">{place}</Small>}
             </div>
           </div>
+          {/* 
+          DISBALING IMAGE DISPLAYING BECAUSE OF PERFORMANCE, ENABLE IF THE UPLOADED IMAGE ARE NOW LOW RESOLUTION
           {src && (
             <div className="w-36 relative justify-items-stretch self-stretch">
-              <img
+              <Image
                 src={src}
                 alt={title}
                 className="rounded-md h-full object-cover aspect-square"
               />
             </div>
-          )}
+          )} */}
         </article>
       </Link>
     );

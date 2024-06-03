@@ -27,34 +27,32 @@ const Agenda = () => {
     undefined
   );
 
-  const now = new Date();
-  now.setHours(0, 0, 0, 0);
-
-  const fetchData = async () => {
-    setLoading(true);
-    const products = await getProductsAction();
-    toast.error("Aucun évenement trouvé");
-
-    if (!products) {
-      toast.error("Aucun évenement trouvé");
-      return;
-    }
-
-    setActualProducts(extractActualProductsAction(products, now));
-    setComingProducts(
-      deleteIntersectingProducts(
-        getProductsNotDeprecatedAction(products, now),
-        actualProducts
-      )
-    );
-    console.log(comingProducts);
-    setProducts(products);
-    setLoading(false);
-  };
-
   useEffect(() => {
+    const now = new Date();
+
+    const fetchData = async () => {
+      setLoading(true);
+      const products = await getProductsAction();
+
+      if (!products) {
+        toast.error("Aucun évenement trouvé");
+        return;
+      }
+
+      setActualProducts(extractActualProductsAction(products, now));
+      setComingProducts(
+        deleteIntersectingProducts(
+          getProductsNotDeprecatedAction(products, now),
+          actualProducts
+        )
+      );
+
+      console.log(comingProducts);
+      setProducts(products);
+      setLoading(false);
+    };
     fetchData();
-  }, []);
+  });
 
   return (
     <Main active="agenda">
