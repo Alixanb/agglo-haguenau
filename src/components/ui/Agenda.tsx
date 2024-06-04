@@ -12,15 +12,29 @@ interface AgendaCardProps extends React.HTMLAttributes<HTMLLinkElement> {
   href: Url;
   src?: string;
   place: string;
+  target?: string;
 }
 
 const AgendaCard = forwardRef<HTMLAnchorElement, AgendaCardProps>(
-  ({ title, date, period, href, place, src, className, ...props }, ref) => {
+  (
+    {
+      title,
+      date,
+      period,
+      href,
+      place,
+      src,
+      className,
+      target = "_self",
+      ...props
+    },
+    ref
+  ) => {
     const formatedDate = date[1]
       ? `du ${date[0]} au ${date[1]}`
       : `le ${date[0]}`;
     return (
-      <Link href={href} ref={ref}>
+      <Link href={href} ref={ref} target={target}>
         <article
           className={cn(
             "rounded border border-border bg-card p-2 flex justify-between gap-4 items-stretch ",

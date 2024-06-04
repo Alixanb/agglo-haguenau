@@ -2,6 +2,7 @@ import { PropsWithChildren } from "react";
 import { Toaster } from "sonner";
 import { ThemeProvider } from "../theme/ThemeProvider";
 import ThemeWrapper from "../theme/ThemeWrapper";
+import PopupProvider from "./PopupProvider";
 
 const Providers = (props: PropsWithChildren) => {
   return (
@@ -11,6 +12,7 @@ const Providers = (props: PropsWithChildren) => {
       enableSystem
       disableTransitionOnChange
     >
+      <PopupProvider />
       <Toaster
         toastOptions={{
           className: "bg-card border border-border text-primary fill-green-400",
