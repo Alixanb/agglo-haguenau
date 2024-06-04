@@ -1,20 +1,29 @@
-Modal :
+### Modal :
+
 Afficher plusieurs popup en meme temps
 refaire les modals selon le model shadcn
 
-ALertes:
+### ALertes:
+
 Espace alertes
 Notifications Push
 
-Agenda:
+### Agenda:
+
 Paufineage
 
-Actualités:
+### Actualités:
+
 Voir pour un export JSON des actus en cours
 Afficher les actualités
 
-Parametre:
+### Parametre:
+
 Corriger le probleme dans la nav (mot parametre trop long)
 Ajouter une fonctionalité pour les notification push (+ ajouter un raccourcis dans le menu alerte)
 Effacer ses données
 Contact ?
+
+PWA & TWA :
+Mettre en cache des données
+[next-pwa](https://www.npmjs.com/package/next-pwa)
