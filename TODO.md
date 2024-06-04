@@ -25,5 +25,5 @@ Effacer ses données
 Contact ?
 
 PWA & TWA :
-Mettre en cache des données
+Mettre en cache des données (static, etc.)
 [next-pwa](https://www.npmjs.com/package/next-pwa)
