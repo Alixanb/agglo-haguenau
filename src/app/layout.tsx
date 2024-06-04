@@ -18,9 +18,6 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr">
-      <head>
-        <link rel="manifest" href="/manifest.json" />
-      </head>
       <body className={cn(inter.className, "bg-background fill-green-400")}>
         <Providers>{children}</Providers>
       </body>
