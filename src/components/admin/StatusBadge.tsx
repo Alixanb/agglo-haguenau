@@ -10,7 +10,7 @@ const statusVariants = {
   COMING: { className: "bg-blue-500/30 border-blue-500/40", label: "À venir" },
   ONLINE: {
     className: "bg-green-500/30 border-green-500/40",
-    label: "En lige",
+    label: "En ligne",
   },
   PASSED: { className: "bg-red-500/30 border-red-500/40", label: "Passé" },
 };

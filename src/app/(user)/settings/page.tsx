@@ -3,6 +3,7 @@ import { BasicHeader, Main, SubSection } from "@/components/layout/";
 import { ThemeSelect } from "@/components/theme/ThemeSelect";
 import { LeadingButton } from "@/components/ui/LeadingButton";
 import { SettingsIcon, Shield } from "lucide-react";
+import Link from "next/link";
 
 const Settings = () => {
   return (
@@ -15,10 +16,12 @@ const Settings = () => {
       </BasicHeader>
       <SubSection>
         <ThemeSelect />
-        <LeadingButton accent="purple" src="/dashboard">
-          <Shield />
-          Espace administrateur
-        </LeadingButton>
+        <Link href="/dashboard">
+          <LeadingButton accent="purple" src="/dashboard">
+            <Shield />
+            Espace administrateur
+          </LeadingButton>
+        </Link>
       </SubSection>
       <NewsLetter />
     </Main>
