@@ -1,8 +1,0 @@
-app/vercel/agglo_haguenau/twa/BuildConfig.java
- app.vercel.agglo_haguenau.twa.BuildConfig
-app/vercel/agglo_haguenau/twa/DelegationService.java
- app.vercel.agglo_haguenau.twa.DelegationService
-app/vercel/agglo_haguenau/twa/Application.java
- app.vercel.agglo_haguenau.twa.Application
-app/vercel/agglo_haguenau/twa/LauncherActivity.java
- app.vercel.agglo_haguenau.twa.LauncherActivity
