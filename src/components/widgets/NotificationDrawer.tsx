@@ -10,6 +10,7 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
+import { ArrowLeftIcon, ArrowRightIcon } from "lucide-react";
 import * as React from "react";
 
 interface NotificationDrawerContentProps
@@ -18,16 +19,19 @@ interface NotificationDrawerContentProps
   subtitle: string;
   onIndexChange: (change: number) => void;
   isLast?: boolean;
+  isFirst?: boolean;
 }
 
 const NotificationDrawerContent: React.FC<NotificationDrawerContentProps> = ({
   title,
   subtitle,
   isLast = false,
+  isFirst = false,
   onIndexChange,
   children,
   className,
 }) => {
+  const isAlone = isLast && isFirst;
   return (
     <DrawerContent className={className}>
       <div className="mx-auto w-full max-w-sm">
@@ -37,14 +41,28 @@ const NotificationDrawerContent: React.FC<NotificationDrawerContentProps> = ({
         </DrawerHeader>
         {children}
         <DrawerFooter>
-          {!isLast && (
-            <div className="flex gap-2 w-full">
-              <Button onClick={() => onIndexChange(1)}>Suivant</Button>
-              <Button onClick={() => onIndexChange(-1)}>Précédent</Button>
+          {!isAlone && (
+            <div className="flex gap-2 w-full grow">
+              <Button
+                onClick={() => onIndexChange(-1)}
+                className="grow flex gap-2"
+                disabled={isFirst}
+              >
+                <ArrowLeftIcon className="size-4" />
+                Précédent
+              </Button>
+              <Button
+                onClick={() => onIndexChange(1)}
+                className="grow flex gap-2"
+                disabled={isLast}
+              >
+                Suivant
+                <ArrowRightIcon className="size-4" />
+              </Button>
             </div>
           )}
           <DrawerClose asChild>
-            <Button variant="outline">Fermer tout</Button>
+            <Button variant="outline">Fermer {!isAlone && "tout"}</Button>
           </DrawerClose>
         </DrawerFooter>
       </div>
@@ -82,6 +100,7 @@ const NotificationDrawer: React.FC<NotificationDrawerProps> = ({
             subtitle={drawerArray[notifIndex].subtitle}
             onIndexChange={handleIndexChange}
             isLast={notifIndex === drawerArray.length - 1}
+            isFirst={notifIndex === 0}
             className={drawerArray[notifIndex].className}
           >
             {drawerArray[notifIndex].children}

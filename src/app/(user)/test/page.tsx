@@ -15,6 +15,10 @@ const PageRoot = () => {
             title: "drawerTest",
             subtitle: "drawer test est un test12",
           },
+          {
+            title: "drawerTest",
+            subtitle: "drawer test est un test12",
+          },
         ]}
       />
     </Main>
