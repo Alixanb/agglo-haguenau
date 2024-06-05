@@ -2,7 +2,6 @@ import { cn } from "@/lib/utils";
 import { Url } from "next/dist/shared/lib/router/router";
 import Link from "next/link";
 import React from "react";
-import { Small } from "../typos";
 
 interface NavSVG {
   [key: string]: {
@@ -152,12 +151,15 @@ const NavElement = React.forwardRef<HTMLLIElement, NavElement>(
     <li className={cn(className, "w-full z-50")} {...props} ref={ref}>
       <Link
         href={href}
-        className="flex flex-col items-center gap-2 w-full h-16 justify-center fill-primary"
+        className="flex flex-col items-center gap-2 w-full h-16 justify-center fill-primary "
+        aria-label={label}
       >
         {isActive ? (
           <>
             {SVG.fill}
-            <Small className="font-semibold">{label}</Small>
+            {/* <Small className="font-semibold max-w-full truncate overflow-hidden">
+              {label}
+            </Small> */}
           </>
         ) : (
           SVG.outline
