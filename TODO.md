@@ -1,7 +1,8 @@
 ### Modal :
 
-Afficher plusieurs popup en meme temps
-refaire les modals selon le model shadcn
+### Nav:
+
+Home Fill problem et agenda ? (tout tester)
 
 ### ALertes:
 
