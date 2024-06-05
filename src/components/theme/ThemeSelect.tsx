@@ -10,7 +10,7 @@ import {
 import { CircleX, Computer, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
-import { LeadingButton } from "../ui/LeadingButton";
+import { LeadingButton, leadingButtonVariants } from "../ui/LeadingButton";
 import { Skeleton } from "../ui/skeleton";
 
 type Theme = "light" | "dark" | "system";
@@ -50,7 +50,7 @@ export function ThemeSelect() {
   }
 
   return (
-    <div className="p-1 border border-border rounded flex gap-2">
+    <div className={leadingButtonVariants()}>
       <LeadingButton size="fit" accent="yellow">
         {getThemeTranslation(theme)?.icon}
       </LeadingButton>
@@ -60,7 +60,7 @@ export function ThemeSelect() {
         }}
         defaultValue={theme}
       >
-        <SelectTrigger className="w-full border-none">
+        <SelectTrigger className="bg-transparent w-full border-none pl-0">
           <SelectValue placeholder={getThemeTranslation(theme)?.translation} />
         </SelectTrigger>
         <SelectContent>

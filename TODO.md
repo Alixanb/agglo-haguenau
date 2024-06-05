@@ -26,6 +26,6 @@ Contact ?
 
 ### PWA & TWA :
 
-Mettre en cache des données (static, etc.)
-[next-pwa](https://www.npmjs.com/package/next-pwa)
+Mettre en cache des données (static, etc.)  
+[next-pwa](https://www.npmjs.com/package/next-pwa)  
 [google pwa](https://developers.google.com/codelabs/pwa-in-play?hl=fr#3)
