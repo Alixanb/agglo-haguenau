@@ -6,14 +6,32 @@ import { Notification } from "@prisma/client";
 import { useEffect, useState } from "react";
 import NotificationDrawer from "../widgets/NotificationDrawer";
 
-const isDateLessByOneDay = (date1: Date, date2: Date) => {
-  const oneDay = 24 * 60 * 60 * 1000;
+/**
+ * Checks if the time difference between two dates is greater than or equal to a specified interval in hours
+ *
+ * @param date1 The first date (Date object)
+ * @param date2 The second date (Date object)
+ * @param intervalInMinutes The interval in minutes to check against
+ * @returns boolean indicating if the difference is greater than or equal to the interval
+ */
+const isTimeDifferenceGreaterThanInterval = (
+  date1: Date,
+  date2: Date,
+  intervalInMinutes: number = 1
+) => {
+  // Convert interval from minutes to milliseconds
+  const timeBeforeNextCheck = intervalInMinutes * 60 * 1000;
   const differenceInTime = date2.getTime() - date1.getTime();
-  const differenceInDays = differenceInTime / oneDay;
 
-  console.log("Last check: " + differenceInDays + " days ago");
+  console.log("Last check: " + differenceInTime / 1000 + " seconds ago");
 
-  return differenceInDays >= 1;
+  console.log(
+    differenceInTime,
+    timeBeforeNextCheck,
+    differenceInTime >= timeBeforeNextCheck
+  );
+
+  return differenceInTime >= timeBeforeNextCheck;
 };
 
 interface NotificationStorage {
@@ -28,24 +46,22 @@ const PopupProvider = () => {
   const now = new Date();
 
   useEffect(() => {
-    localStorage.clear();
+    // localStorage.clear();
 
     const fetchNotification = async () => {
       let localNotifications = JSON.parse(
         localStorage.getItem("notification") || "{}"
       );
 
-      const lastChecked: Date =
-        new Date(localNotifications.lastChecked) || new Date(0);
+      const lastChecked: Date = new Date(localNotifications.lastChecked || 0);
 
-      if (!lastChecked || isDateLessByOneDay(lastChecked, now)) {
-        let updatedNotification = { ...localNotifications, lastChecked: now };
-        localStorage.setItem(
-          "notification",
-          JSON.stringify(updatedNotification)
-        );
-        // return;http://localhost:3000/
+      if (!isTimeDifferenceGreaterThanInterval(lastChecked, now, 15)) {
+        return;
       }
+
+      // On ecrit dans le local storage que on vient de refresh les notifs
+      let updatedNotification = { ...localNotifications, lastChecked: now };
+      localStorage.setItem("notification", JSON.stringify(updatedNotification));
 
       const baseNotifications = await getAllNotificationAction();
       const readedNotifications: String[] = localNotifications?.storage || [];

@@ -1,5 +1,9 @@
 ### Modal :
 
+Test : avant et apres a marche ?
+Check dans l'heure pas la journée
+Vrifier que le refresh des notifs se fait
+
 ### Nav:
 
 Home Fill problem et agenda ? (tout tester)
