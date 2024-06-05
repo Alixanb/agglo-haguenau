@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import { Main } from "../layout";
 
@@ -18,6 +19,7 @@ interface AuthFormProps {
 
 const AuthForm = ({ onSubmit }: AuthFormProps) => {
   const [password, setPassword] = useState("");
+  const router = useRouter();
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -51,7 +53,7 @@ const AuthForm = ({ onSubmit }: AuthFormProps) => {
               <Button
                 type="button"
                 variant="outline"
-                onClick={() => setPassword("")}
+                onClick={() => router.back()}
               >
                 Annuler
               </Button>

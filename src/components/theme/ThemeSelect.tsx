@@ -63,13 +63,20 @@ export function ThemeSelect() {
         <SelectTrigger className="bg-transparent w-full border-none pl-0">
           <SelectValue placeholder={getThemeTranslation(theme)?.translation} />
         </SelectTrigger>
-        <SelectContent>
-          {themeTraduction.map((item, i) => (
-            <SelectItem value={item.value} key={item.value}>
-              {item.translation}
-            </SelectItem>
-          ))}
-        </SelectContent>
+        <div onClick={(e) => e.stopPropagation()}>
+          <SelectContent
+            ref={(ref) => {
+              if (!ref) return;
+              ref.ontouchstart = (e) => e.preventDefault();
+            }}
+          >
+            {themeTraduction.map((item, i) => (
+              <SelectItem value={item.value} key={item.value}>
+                {item.translation}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </div>
       </Select>
     </div>
   );
