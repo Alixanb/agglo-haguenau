@@ -10,7 +10,7 @@ Notifications Push
 
 ### Agenda:
 
-Paufineage
+Terminer agenda
 
 ### Actualités:
 
@@ -19,7 +19,6 @@ Afficher les actualités
 
 ### Parametre:
 
-Corriger le probleme dans la nav (mot parametre trop long)
 Ajouter une fonctionalité pour les notification push (+ ajouter un raccourcis dans le menu alerte)
 Effacer ses données
 Contact ?
