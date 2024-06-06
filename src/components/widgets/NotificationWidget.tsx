@@ -36,19 +36,21 @@ const NotificationWidget: React.FC<NotificationProps> = ({
     <span {...props}>
       <Link
         href={notification.link}
-        className="flex gap-4 justify-between border border-border rounded py-1 px-2 items-center"
+        className="flex  justify-between  rounded py-1 px-2  items-center"
       >
         <span className="flex gap-4 ">
-          <div className="flex items-center justify-center">
+          <div className="flex items-center justify-center p-3">
             <div className={cn("size-2 rounded-full", badgeBgColor)}></div>
           </div>
           <div>
             <P variant="medium">{notification.title}</P>
-            <Small>{`Jusuqu'au ${formatDate(dateTo)}`}</Small>
+            <Small className="truncate">{`Jusuqu'au ${formatDate(
+              dateTo
+            )}`}</Small>
           </div>
         </span>
         <LeadingButton variant="buttonOnly" size="fit" accent="gray">
-          <ExternalLink />
+          <ExternalLink className="size-4" />
         </LeadingButton>
       </Link>
     </span>

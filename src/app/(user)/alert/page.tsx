@@ -10,6 +10,8 @@ import { Notification } from "@prisma/client";
 import { Bell, Settings } from "lucide-react";
 import { useEffect, useState } from "react";
 
+//Si les laertes de la bdd
+
 const Alert = () => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
   const [loading, setLoading] = useState<boolean>(true);

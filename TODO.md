@@ -4,6 +4,10 @@ Test : avant et apres a marche ?
 Check dans l'heure pas la journée
 Vrifier que le refresh des notifs se fait
 
+### Responsive
+
+Tablette (+& mobile sideways ?)
+
 ### Nav:
 
 Home Fill problem et agenda ? (tout tester)
@@ -33,3 +37,7 @@ Contact ?
 Mettre en cache des données (static, etc.)  
 [next-pwa](https://www.npmjs.com/package/next-pwa)  
 [google pwa](https://developers.google.com/codelabs/pwa-in-play?hl=fr#3)
+
+### Notes
+
+export notifs

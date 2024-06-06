@@ -7,32 +7,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { CircleX, Computer, Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { LeadingButton, leadingButtonVariants } from "../ui/LeadingButton";
 import { Skeleton } from "../ui/skeleton";
+import { getThemeTranslation, themeTraduction } from "./theme.utils";
 
-type Theme = "light" | "dark" | "system";
+export const setAutomaticThemeColor = () => {};
 
-const themeTraduction: {
-  value: Theme;
-  translation: string;
-  icon: React.ReactNode;
-}[] = [
-  { value: "light", translation: "Mode clair", icon: <Sun /> },
-  { value: "dark", translation: "Mode sombre", icon: <Moon /> },
-  {
-    value: "system",
-    translation: "Dépendamment du système",
-    icon: <Computer />,
-  },
-];
-
-const getThemeTranslation = (theme: string | undefined) => {
-  const res = themeTraduction.find((item) => item.value === theme);
-  return res ? res : { translation: "Thème non trouvé", icon: <CircleX /> };
-};
+export const unsetAutomaticThemeColor = () => {};
 
 export function ThemeSelect() {
   const { theme, setTheme } = useTheme();

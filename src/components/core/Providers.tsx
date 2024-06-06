@@ -1,6 +1,6 @@
+import { ThemeProvider } from "next-themes";
 import { PropsWithChildren } from "react";
 import { Toaster } from "sonner";
-import { ThemeProvider } from "../theme/ThemeProvider";
 import ThemeWrapper from "../theme/ThemeWrapper";
 import PopupProvider from "./PopupProvider";
 

@@ -5,14 +5,13 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
-
 export const metadata: Metadata = {
   title: "Agglomération de Haguenau",
   description: "Application WEB de la Communuaté d'Agglomération de Haguenau",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#4285f4",
+  themeColor: { color: "black" },
 };
 
 export default function RootLayout({

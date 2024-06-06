@@ -155,7 +155,7 @@ const NavElement = React.forwardRef<HTMLLIElement, NavElement>(
     <li className={cn(className, "w-full z-50")} {...props} ref={ref}>
       <Link
         href={href}
-        className="flex flex-col items-center gap-2 w-full h-16 justify-center fill-primary "
+        className="flex flex-col items-center gap-2 w-full pb-2 h-14 justify-center fill-primary "
         aria-label={label}
       >
         {isActive ? (
@@ -194,7 +194,7 @@ const Nav = React.forwardRef<HTMLElement, NavProps>(
       {...props}
       ref={ref}
     >
-      <ul className="flex px-6 pb-4 flex-grow flex-shrink-0 ">
+      <ul className="flex px-6 flex-grow flex-shrink-0 ">
         <NavElement
           label="Menu"
           SVG={NavSVG.home}
