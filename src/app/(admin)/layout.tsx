@@ -2,18 +2,26 @@
 
 import AuthForm from "@/components/admin/AuthForm";
 import { DotLoader } from "@/components/core/Loader";
-import { checkPasswordValidity } from "@/lib/auth";
+import { checkPasswordValidity, getHashFromString } from "@/lib/auth";
 import { LayoutParams } from "@/types/next";
 import { useEffect, useState } from "react";
+
+const checkRawPassword = async (password: string) => {
+  return await checkPasswordValidity(await getHashFromString(password));
+};
 
 const LayoutPage = (props: LayoutParams<{}>) => {
   const [password, setPassword] = useState<string | null>(null);
   const [isLoading, setLoading] = useState<boolean>(true);
 
-  const handleAuthSubmit = async (pass: string) => {
-    if (await checkPasswordValidity(pass)) {
-      setPassword(pass);
-      localStorage.setItem("adminPassword", pass);
+  const handleAuthSubmit = async (submittedPassword: string) => {
+    if (await checkRawPassword(submittedPassword)) {
+      setPassword(await getHashFromString(submittedPassword));
+
+      localStorage.setItem(
+        "credentials_hash",
+        await getHashFromString(submittedPassword)
+      );
     } else {
       alert("Mot de passe incorrect, merci de réessayer.");
     }
@@ -25,7 +33,7 @@ const LayoutPage = (props: LayoutParams<{}>) => {
 
   useEffect(() => {
     const getLocalPasswordValidity = async () => {
-      const storedPassword = localStorage.getItem("adminPassword");
+      const storedPassword = localStorage.getItem("credentials_hash");
 
       if (!storedPassword) {
         setLoading(false);
@@ -34,14 +42,21 @@ const LayoutPage = (props: LayoutParams<{}>) => {
 
       if (await checkPasswordValidity(storedPassword)) {
         setPassword(storedPassword);
+      } else {
+        alert(
+          "Mot de passe enregistré en cache incorrecte, merci de réessayer."
+        );
       }
       setLoading(false);
     };
 
     const getReturnObject = async () => {
+      if (!password) {
+        return;
+      }
+
       if (await checkPasswordValidity(password)) {
         setReturnObject(<>{props.children}</>);
-        return;
       }
     };
 

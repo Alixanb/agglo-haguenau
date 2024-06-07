@@ -30,7 +30,8 @@ import { CalendarIcon, Info, Save } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { createProductAction } from "./notification.action";
+import { createNotificationAction } from "../notification.action";
+import { getLocalAdminPassword } from "@/lib/client-utils";
 
 export const NotificationSchema = z.object({
   title: z.string().min(2, {
@@ -58,7 +59,10 @@ const InputForm = () => {
   });
 
   const onSubmit = async (data: z.infer<typeof NotificationSchema>) => {
-    const notification = createProductAction(data);
+    const notification = createNotificationAction(
+      data,
+      getLocalAdminPassword()
+    );
 
     toast({
       title: "Notification créée avec succés",

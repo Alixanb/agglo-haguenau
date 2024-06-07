@@ -19,14 +19,11 @@ Espace actualités
 ### Parametres:
 
 Ajouter une fonctionalité pour les notification push (+ ajouter un raccourcis dans le menu alerte)
-Effacer ses données
 Contact ?
 
 ### Dashboard
 
 Update des notifications
-Probleme de lien avec la nav
-Hacher le mot de passe ?
 
 ### PWA & TWA :
 

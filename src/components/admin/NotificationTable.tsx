@@ -21,7 +21,7 @@ import {
 } from "lucide-react";
 import * as React from "react";
 
-import { deleteNotificationAction } from "@/app/(admin)/dashboard/new/notification.action";
+import { deleteNotificationAction } from "@/app/(admin)/dashboard/notification.action";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -38,6 +38,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { getLocalAdminPassword } from "@/lib/client-utils";
 import { Notification } from "@prisma/client";
 import StatusBadge from "./StatusBadge";
 
@@ -102,7 +103,10 @@ export const columns: ColumnDef<Notification>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuItem
               onClick={() => {
-                deleteNotificationAction(notification.id);
+                deleteNotificationAction(
+                  notification.id,
+                  getLocalAdminPassword()
+                );
                 window.location.reload();
               }}
             >
