@@ -21,6 +21,7 @@ import {
 } from "lucide-react";
 import * as React from "react";
 
+import { deleteNotificationAction } from "@/app/(admin)/dashboard/new/notification.action";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -88,7 +89,7 @@ export const columns: ColumnDef<Notification>[] = [
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original;
+      const notification = row.original;
 
       return (
         <DropdownMenu>
@@ -100,15 +101,14 @@ export const columns: ColumnDef<Notification>[] = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
+              onClick={() => {
+                deleteNotificationAction(notification.id);
+                window.location.reload();
+              }}
             >
               Supprimer
             </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Modifier
-            </DropdownMenuItem>
+            <DropdownMenuItem onClick={() => {}}>Modifier</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );

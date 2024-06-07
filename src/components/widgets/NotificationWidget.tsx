@@ -30,8 +30,6 @@ const NotificationWidget: React.FC<NotificationProps> = ({
 
   const badgeBgColor = state === "ALIVE" ? "bg-red-500" : "bg-gray-300";
 
-  console.log(now, dateFrom, now < dateTo);
-
   return (
     <span {...props}>
       <Link

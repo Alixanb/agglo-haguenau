@@ -5,11 +5,11 @@ import { BasicHeader, Main, Section } from "@/components/layout/";
 import { H2 } from "@/components/typos";
 import AgendaCard from "@/components/ui/Agenda";
 import { LeadingButton } from "@/components/ui/LeadingButton";
+import { toast } from "@/components/ui/use-toast";
 import { Grid } from "@/components/widgets/Grid";
 import { Product } from "@/types/entity";
 import { CalendarDays } from "lucide-react";
 import { useEffect, useState } from "react";
-import { toast } from "sonner";
 import {
   deleteIntersectingProducts,
   extractActualProductsAction,
@@ -34,7 +34,9 @@ const Agenda = () => {
       const data = await getProductsAction();
 
       if (!data) {
-        toast.error("Aucun évenement trouvé");
+        toast({
+          title: "Aucun évènement trouvé",
+        });
         return;
       }
 

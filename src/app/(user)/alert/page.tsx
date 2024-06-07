@@ -2,7 +2,7 @@
 
 import { getAllNotificationAction } from "@/app/(admin)/dashboard/notification.action";
 import { BasicHeader, Main, Section, SubSection } from "@/components/layout/";
-import { H2 } from "@/components/typos";
+import { H2, Small } from "@/components/typos";
 import { LeadingButton } from "@/components/ui/LeadingButton";
 import { Skeleton } from "@/components/ui/skeleton";
 import NotificationWidget from "@/components/widgets/NotificationWidget";
@@ -51,7 +51,7 @@ const Alert = () => {
             <Skeleton className="w-full h-12" />
           </>
         ) : !notifications.length ? (
-          <div>Aucune alerte en cours</div>
+          <Small>Aucune alerte en cours</Small>
         ) : (
           notifications.map((notification, i) => {
             return <NotificationWidget notification={notification} key={i} />;

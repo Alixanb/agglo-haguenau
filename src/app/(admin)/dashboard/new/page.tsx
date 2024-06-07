@@ -1,5 +1,227 @@
-const RootPage = () => {
-  return <div>gyat</div>;
+"use client";
+
+import { Main } from "@/components/layout";
+import { Hr } from "@/components/layout/Elements";
+import { H1, Small } from "@/components/typos";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
+import { Textarea } from "@/components/ui/textarea";
+import { toast } from "@/components/ui/use-toast";
+import { Grid } from "@/components/widgets/Grid";
+import { formatDate } from "@/lib/notification/action";
+import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { CalendarIcon, Info, Save } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
+import { createProductAction } from "./notification.action";
+
+export const NotificationSchema = z.object({
+  title: z.string().min(2, {
+    message: "Le titre doit fair un minimum de 2 charactères",
+  }),
+  text: z.string(),
+  dateFrom: z.date({
+    required_error: "Vous devez indiqué la date de début",
+  }),
+  dateTo: z.date({
+    required_error: "Vous devez indiqué la date de fin",
+  }),
+  link: z.string(),
+});
+
+const InputForm = () => {
+  const router = useRouter();
+
+  const form = useForm<z.infer<typeof NotificationSchema>>({
+    resolver: zodResolver(NotificationSchema),
+    defaultValues: {
+      title: "",
+      text: "",
+    },
+  });
+
+  const onSubmit = async (data: z.infer<typeof NotificationSchema>) => {
+    const notification = createProductAction(data);
+
+    toast({
+      title: "Notification créée avec succés",
+    });
+
+    router.push("/dashboard");
+  };
+
+  return (
+    <Main>
+      <H1>Créer une notification</H1>
+      <Form {...form}>
+        <form
+          onSubmit={form.handleSubmit(onSubmit)}
+          className="gap-4 w-full flex flex-col flex-1 grow"
+        >
+          <FormField
+            control={form.control}
+            name="title"
+            render={({ field }: any) => (
+              <FormItem>
+                <FormLabel>Titre</FormLabel>
+                <FormControl>
+                  <Input placeholder="Titre de la notification" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="text"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Description</FormLabel>
+                <FormControl>
+                  <Textarea
+                    placeholder="Description de la notifications"
+                    className="resize-none"
+                    {...field}
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Hr />
+          <Small className="leading-normal mr-2 mb-2">
+            <Info className="size-4 my-2" />
+            Les dates ci-dessous permettent d&apos;indiquer à partir de quand la
+            notification sera visible et notifiera les utilisateurs, et
+            jusqu&apos;à quand.
+            <br /> Elle est aussi significative de la période dont cette
+            information est importante.
+          </Small>
+          <FormField
+            control={form.control}
+            name="dateFrom"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel>Date de début</FormLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={"outline"}
+                        className={cn(
+                          "pl-3 text-left font-normal",
+                          !field.value && "text-muted-foreground"
+                        )}
+                      >
+                        {field.value ? (
+                          formatDate(field.value)
+                        ) : (
+                          <span>Choisissez une date</span>
+                        )}
+                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={field.onChange}
+                      disabled={(date: Date) => date < new Date()}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="dateTo"
+            render={({ field }) => (
+              <FormItem className="flex flex-col">
+                <FormLabel>Date de fin</FormLabel>
+                <Popover>
+                  <PopoverTrigger asChild>
+                    <FormControl>
+                      <Button
+                        variant={"outline"}
+                        className={cn(
+                          "pl-3 text-left font-normal",
+                          !field.value && "text-muted-foreground"
+                        )}
+                      >
+                        {field.value ? (
+                          formatDate(field.value)
+                        ) : (
+                          <span>Choisissez une date</span>
+                        )}
+                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                      </Button>
+                    </FormControl>
+                  </PopoverTrigger>
+                  <PopoverContent className="w-auto p-0" align="start">
+                    <Calendar
+                      mode="single"
+                      selected={field.value}
+                      onSelect={field.onChange}
+                      disabled={(date: Date) => date < new Date()}
+                      initialFocus
+                    />
+                  </PopoverContent>
+                </Popover>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Hr />
+          <FormField
+            control={form.control}
+            name="link"
+            render={({ field }: any) => (
+              <FormItem>
+                <FormLabel>Lien</FormLabel>
+                <FormControl>
+                  <Input placeholder="Lien de la notification" {...field} />
+                </FormControl>
+                <FormDescription>
+                  Lien vers lequel la notification renvoie
+                </FormDescription>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <Grid cols="2">
+            <Button type="reset" variant="outline">
+              Annuler
+            </Button>
+            <Button type="submit" className="flex gap-2">
+              <Save className="size-4" />
+              Sauvegarder
+            </Button>
+          </Grid>
+        </form>
+      </Form>
+    </Main>
+  );
 };
 
-export default RootPage;
+export default InputForm;

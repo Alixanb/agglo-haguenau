@@ -1,7 +1,7 @@
 import { ThemeProvider } from "next-themes";
 import { PropsWithChildren } from "react";
-import { Toaster } from "sonner";
 import ThemeWrapper from "../theme/ThemeWrapper";
+import { Toaster } from "../ui/toaster";
 import PopupProvider from "./PopupProvider";
 
 const Providers = (props: PropsWithChildren) => {
@@ -13,17 +13,8 @@ const Providers = (props: PropsWithChildren) => {
       disableTransitionOnChange
     >
       <PopupProvider />
-      <Toaster
-        toastOptions={{
-          className: "bg-card border border-border text-primary fill-green-400",
-          style: { marginBottom: "5rem", fill: "green !important" },
-          classNames: {
-            toast: "bg-blue-400",
-            title: "text-primary",
-            description: "text-muted-foreground",
-          },
-        }}
-      />
+      <Toaster />
+
       <ThemeWrapper>{props.children}</ThemeWrapper>
     </ThemeProvider>
   );

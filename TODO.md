@@ -32,6 +32,11 @@ Ajouter une fonctionalité pour les notification push (+ ajouter un raccourcis d
 Effacer ses données
 Contact ?
 
+### Dashboard
+
+Insert des notifications
+Probleme de lien avec la nav
+
 ### PWA & TWA :
 
 Mettre en cache des données (static, etc.)  
