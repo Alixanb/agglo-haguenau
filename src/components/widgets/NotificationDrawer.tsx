@@ -93,8 +93,6 @@ const NotificationDrawer: React.FC<NotificationDrawerProps> = ({
   const [open, setOpen] = React.useState(true);
   const [notifIndex, setNotifIndex] = React.useState<number>(0);
 
-  console.log("loaf");
-
   const handleIndexChange = (change: number) => {
     setNotifIndex((prevIndex) => {
       const newIndex = prevIndex + change;

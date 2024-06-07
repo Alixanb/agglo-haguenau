@@ -1,7 +1,3 @@
-### Modal :
-
-Les modals s'affichent pendant les mauvaises periodes, meme si elles sont censé etre dead ou coming
-
 ### ALertes:
 
 Notifications Push

@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { getAllNotificationAction } from "@/app/(admin)/dashboard/notification.action";
+import { getCurrentNotificationAction } from "@/app/(admin)/dashboard/notification.action";
 import { Notification } from "@prisma/client";
 import { useEffect, useState } from "react";
 import NotificationDrawer from "../widgets/NotificationDrawer";
@@ -22,14 +22,6 @@ const isTimeDifferenceGreaterThanInterval = (
   // Convert interval from minutes to milliseconds
   const timeBeforeNextCheck = intervalInMinutes * 60 * 1000;
   const differenceInTime = date2.getTime() - date1.getTime();
-
-  console.log("Last check: " + differenceInTime / 1000 + " seconds ago");
-
-  console.log(
-    differenceInTime,
-    timeBeforeNextCheck,
-    differenceInTime >= timeBeforeNextCheck
-  );
 
   return differenceInTime >= timeBeforeNextCheck;
 };
@@ -63,7 +55,8 @@ const PopupProvider = () => {
       let updatedNotification = { ...localNotifications, lastChecked: now };
       localStorage.setItem("notification", JSON.stringify(updatedNotification));
 
-      const baseNotifications = await getAllNotificationAction();
+      const baseNotifications = await getCurrentNotificationAction(now);
+      console.log("notif", await getCurrentNotificationAction(now));
       const readedNotifications: String[] = localNotifications?.storage || [];
       let notReadNotification: Notification[] = [];
 
@@ -99,17 +92,7 @@ const PopupProvider = () => {
     return;
   }
 
-  console.log(notifications);
-
-  return (
-    <NotificationDrawer drawerArray={notifications} />
-    // <Modal
-    //   title={notifications[0].title}
-    //   text="lorem ipsum"
-    //   period="periode"
-    //   href="#"
-    // ></Modal>
-  );
+  return <NotificationDrawer drawerArray={notifications} />;
 };
 
 export default PopupProvider;

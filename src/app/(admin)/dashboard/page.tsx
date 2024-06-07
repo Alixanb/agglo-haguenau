@@ -8,14 +8,13 @@ import { Plus } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { getAllNotificationAction } from "./notification.action";
-import { getLocalAdminPassword } from "@/lib/client-utils";
 
 const RootPage = () => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
 
   useEffect(() => {
     const fetchNotifications = async () => {
-      setNotifications(await getAllNotificationAction(getLocalAdminPassword()));
+      setNotifications(await getAllNotificationAction());
     };
 
     fetchNotifications();
