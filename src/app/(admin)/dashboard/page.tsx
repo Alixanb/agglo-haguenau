@@ -7,14 +7,14 @@ import { Notification } from "@prisma/client";
 import { Plus } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { getAllNotificationAction } from "./notification.action";
+import { getAllNotificationsAction } from "./notification.action";
 
 const RootPage = () => {
   const [notifications, setNotifications] = useState<Notification[]>([]);
 
   useEffect(() => {
     const fetchNotifications = async () => {
-      setNotifications(await getAllNotificationAction());
+      setNotifications(await getAllNotificationsAction());
     };
 
     fetchNotifications();

@@ -7,11 +7,11 @@ import { NotificationSchema } from "./new/page";
 
 /** ACTION THAT DOESN'T REQUIRE ADMIN PERMISSION */
 
-export const getAllNotificationAction = async () => {
+export const getAllNotificationsAction = async () => {
   return await prisma.notification.findMany();
 };
 
-export const getCurrentNotificationAction = async (now: Date) => {
+export const getCurrentNotificationsAction = async (now: Date) => {
   return await prisma.notification.findMany({
     where: {
       dateFrom: { lt: now },
@@ -20,8 +20,14 @@ export const getCurrentNotificationAction = async (now: Date) => {
   });
 };
 
-export const getPassedNotificationAction = async (now: Date) => {
-  return await prisma.notification.findMany({ where: {} });
+export const getExpiredNotificationsAction = async (now: Date) => {
+  return await prisma.notification.findMany({ where: { dateTo: { lt: now } } });
+};
+
+export const getUpcomingNotificationsAction = async (now: Date) => {
+  return await prisma.notification.findMany({
+    where: { dateFrom: { gt: now } },
+  });
 };
 
 /** ACTION THAT REQUIRE ADMIN PERMISSION */

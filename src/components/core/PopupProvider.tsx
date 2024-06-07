@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 "use client";
 
-import { getCurrentNotificationAction } from "@/app/(admin)/dashboard/notification.action";
+import { getCurrentNotificationsAction } from "@/app/(admin)/dashboard/notification.action";
 import { Notification } from "@prisma/client";
 import { useEffect, useState } from "react";
 import NotificationDrawer from "../widgets/NotificationDrawer";
@@ -55,8 +55,8 @@ const PopupProvider = () => {
       let updatedNotification = { ...localNotifications, lastChecked: now };
       localStorage.setItem("notification", JSON.stringify(updatedNotification));
 
-      const baseNotifications = await getCurrentNotificationAction(now);
-      console.log("notif", await getCurrentNotificationAction(now));
+      const baseNotifications = await getCurrentNotificationsAction(now);
+      console.log("notif", await getCurrentNotificationsAction(now));
       const readedNotifications: String[] = localNotifications?.storage || [];
       let notReadNotification: Notification[] = [];
 
