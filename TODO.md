@@ -1,21 +1,11 @@
 ### Modal :
 
-Test : avant et apres a marche ?
-Check dans l'heure pas la journée
-Vrifier que le refresh des notifs se fait
-
-### Responsive
-
-Tablette (+& mobile sideways ?)
-
-### Nav:
-
-Home Fill problem et agenda ? (tout tester)
+Les modals s'affichent pendant les mauvaises periodes, meme si elles sont censé etre dead ou coming
 
 ### ALertes:
 
-Espace alertes
 Notifications Push
+Alertes avant et apres
 
 ### Agenda:
 
@@ -24,9 +14,9 @@ Terminer agenda
 ### Actualités:
 
 Voir pour un export JSON des actus en cours
-Afficher les actualités
+Espace actualités
 
-### Parametre:
+### Parametres:
 
 Ajouter une fonctionalité pour les notification push (+ ajouter un raccourcis dans le menu alerte)
 Effacer ses données
@@ -34,7 +24,7 @@ Contact ?
 
 ### Dashboard
 
-Insert des notifications
+Update des notifications
 Probleme de lien avec la nav
 Hacher le mot de passe ?
 
