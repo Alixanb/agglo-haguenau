@@ -36,6 +36,7 @@ Contact ?
 
 Insert des notifications
 Probleme de lien avec la nav
+Hacher le mot de passe ?
 
 ### PWA & TWA :
 
