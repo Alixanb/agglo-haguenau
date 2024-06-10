@@ -1,7 +1,8 @@
 ### ALertes:
 
 Notifications Push
-Alertes avant et apres
+
+Affichage : 0 pas voulu, faire les tests et
 
 ### Agenda:
 

@@ -21,7 +21,7 @@ export const getThemeTranslation = (theme: string | undefined) => {
   return res ? res : { translation: "Thème non trouvé", icon: <CircleX /> };
 };
 
-const colorEquivalentToTheme = {
+const colorEquivalentToTheme: { [key: string]: string | undefined } = {
   dark: "#000000",
   light: "#FFFFFF",
   system: undefined,

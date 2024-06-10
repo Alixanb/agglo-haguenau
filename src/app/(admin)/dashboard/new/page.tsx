@@ -23,6 +23,7 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
 import { Grid } from "@/components/widgets/Grid";
+import { getLocalAdminPassword } from "@/lib/client-utils";
 import { formatDate } from "@/lib/notification/action";
 import { cn } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -30,24 +31,12 @@ import { CalendarIcon, Info, Save } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { createNotificationAction } from "../notification.action";
-import { getLocalAdminPassword } from "@/lib/client-utils";
+import {
+  createNotificationAction,
+  NotificationSchema,
+} from "../notification.action";
 
-export const NotificationSchema = z.object({
-  title: z.string().min(2, {
-    message: "Le titre doit fair un minimum de 2 charactères",
-  }),
-  text: z.string(),
-  dateFrom: z.date({
-    required_error: "Vous devez indiqué la date de début",
-  }),
-  dateTo: z.date({
-    required_error: "Vous devez indiqué la date de fin",
-  }),
-  link: z.string(),
-});
-
-const InputForm = () => {
+const RootPage = () => {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof NotificationSchema>>({
@@ -228,4 +217,4 @@ const InputForm = () => {
   );
 };
 
-export default InputForm;
+export default RootPage;
