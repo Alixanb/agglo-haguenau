@@ -54,7 +54,7 @@ const Alert = () => {
       </BasicHeader>
       <Section>
         <SubSection>
-          <LeadingButton accent="black">
+          <LeadingButton accent="primary">
             <Settings />
             Paramètres de notifications
           </LeadingButton>

@@ -1,3 +1,4 @@
+import StatusBadge from "@/components/admin/StatusBadge";
 import BreadcrumbFactory from "@/components/core/BreadcrumbFactory";
 import { Main, Section, SubSection } from "@/components/layout";
 import { H1, P } from "@/components/typos";
@@ -33,6 +34,10 @@ const RootPage = async ({ params }: { params: { id: string } }) => {
     <Main>
       <Section>
         <BreadcrumbFactory items={breadcrumbItems} />
+        <StatusBadge
+          dateFrom={notification.dateFrom}
+          dateTo={notification.dateTo}
+        />
         <H1>{notification.title}</H1>
         <Grid cols="2">
           <Drawer>

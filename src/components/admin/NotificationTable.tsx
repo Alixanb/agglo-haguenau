@@ -47,6 +47,7 @@ export const columns: ColumnDef<Notification>[] = [
   {
     accessorKey: "status",
     header: "Statut",
+
     cell: ({ row }) => {
       return (
         <>
@@ -134,7 +135,7 @@ export function NotificationDataTable({ data }: { data: Notification[] | [] }) {
     []
   );
   const [columnVisibility, setColumnVisibility] =
-    React.useState<VisibilityState>({});
+    React.useState<VisibilityState>({ dateFrom: false, dateTo: false });
 
   const table = useReactTable({
     data,
@@ -206,7 +207,8 @@ export function NotificationDataTable({ data }: { data: Notification[] | [] }) {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline">
-              Champs <ChevronDown className="ml-2 h-4 w-4" />
+              Afficher
+              <ChevronDown className="ml-2 h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">

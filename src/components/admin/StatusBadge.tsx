@@ -33,7 +33,7 @@ const StatusBadge: React.FC<StatusBadgeProps> = ({
   return (
     <div
       className={cn(
-        "whitespace-nowrap py-1 px-4 rounded-3xl border flex justify-center",
+        "whitespace-nowrap py-1 w-fit px-8 font-medium rounded-3xl border flex justify-center",
         statusVariants[status].className,
         className
       )}
