@@ -11,7 +11,7 @@ export const themeTraduction: {
   { value: "dark", translation: "Mode sombre", icon: <Moon /> },
   {
     value: "system",
-    translation: "Dépendamment du système",
+    translation: "Système",
     icon: <Computer />,
   },
 ];

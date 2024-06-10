@@ -31,10 +31,8 @@ import { CalendarIcon, Info, Save } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
-import {
-  createNotificationAction,
-  NotificationSchema,
-} from "../notification.action";
+import { createNotificationAction } from "../notification.action";
+import { NotificationSchema } from "../notification.client.action";
 
 const RootPage = () => {
   const router = useRouter();

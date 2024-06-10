@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { cn } from "@/lib/utils";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
 import { LeadingButton, leadingButtonVariants } from "../ui/LeadingButton";
@@ -33,10 +34,16 @@ export function ThemeSelect() {
   }
 
   return (
-    <div className={leadingButtonVariants()}>
-      <LeadingButton size="fit" accent="yellow">
+    <div
+      className={cn(
+        "text-start text-primary text-sm h-fit font-medium text-ellipsis overflow-hidden whitespace-nowrap",
+        leadingButtonVariants()
+      )}
+    >
+      <LeadingButton size="fit" accent="primary">
         {getThemeTranslation(theme)?.icon}
       </LeadingButton>
+      Thème:
       <Select
         onValueChange={(value) => {
           setTheme(value);
@@ -55,7 +62,7 @@ export function ThemeSelect() {
           >
             {themeTraduction.map((item, i) => (
               <SelectItem value={item.value} key={item.value}>
-                {item.translation}
+                <div>{item.translation}</div>
               </SelectItem>
             ))}
           </SelectContent>

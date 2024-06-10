@@ -49,6 +49,7 @@ const leadingButtonIconVariants = cva("rounded-sm p-2", {
       lime: "bg-lime-100 stroke-lime-600 dark:bg-lime-600 dark:stroke-lime-100",
       purple:
         "bg-purple-100 stroke-purple-600 dark:bg-purple-600 dark:stroke-purple-100",
+      primary: "bg-primary-foreground  stroke-primary ",
     },
   },
   defaultVariants: {

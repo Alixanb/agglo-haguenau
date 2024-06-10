@@ -3,20 +3,7 @@
 import { checkPasswordValidity } from "@/lib/auth";
 import { z } from "zod";
 import prisma from "../../../lib/db";
-
-export const NotificationSchema = z.object({
-  title: z.string().min(2, {
-    message: "Le titre doit fair un minimum de 2 charactères",
-  }),
-  text: z.string(),
-  dateFrom: z.date({
-    required_error: "Vous devez indiqué la date de début",
-  }),
-  dateTo: z.date({
-    required_error: "Vous devez indiqué la date de fin",
-  }),
-  link: z.string(),
-});
+import { NotificationSchema } from "./notification.client.action";
 
 /** ACTION THAT DOESN'T REQUIRE ADMIN PERMISSION */
 
