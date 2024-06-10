@@ -77,36 +77,36 @@ const RootPage = async ({ params }: { params: { id: string } }) => {
       </Section>
       <Section>
         <SubSection>
-          <Label>Titre</Label>
+          <Label variant="muted">Titre</Label>
           <P>{notification.title}</P>
         </SubSection>
         <SubSection>
-          <Label>Descirption</Label>
+          <Label variant="muted">Descirption</Label>
           <P>{notification.text}</P>
         </SubSection>
       </Section>
       <Grid cols="2">
         <SubSection>
-          <Label>Date de début</Label>
+          <Label variant="muted">Date de début</Label>
           <P>{formatDate(notification.dateFrom)}</P>
         </SubSection>
         <SubSection>
-          <Label>Date de fin</Label>
+          <Label variant="muted">Date de fin</Label>
           <P>{formatDate(notification.dateTo)}</P>
         </SubSection>
       </Grid>
       <Section>
         <SubSection>
-          <Label>Lien</Label>
+          <Label variant="muted">Lien</Label>
           <P>{notification.link}</P>
         </SubSection>
         <Grid cols="2">
           <SubSection>
-            <Label>Créé le</Label>
+            <Label variant="muted">Créé le</Label>
             <P>{formatDate(notification.createdAt)}</P>
           </SubSection>
           <SubSection>
-            <Label>Modifié le</Label>
+            <Label variant="muted">Modifié le</Label>
             <P>{formatDate(notification.updatedAt)}</P>
           </SubSection>
         </Grid>
