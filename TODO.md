@@ -1,8 +1,8 @@
 ### ALertes:
 
 Notifications Push
-
 Affichage : 0 pas voulu, faire les tests et
+Styling du READ alertes
 
 ### Agenda:
 

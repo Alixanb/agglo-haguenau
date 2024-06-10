@@ -1,14 +1,20 @@
 "use server";
 
 import { checkPasswordValidity } from "@/lib/auth";
+import { NotificationSchema } from "@/lib/types";
 import { z } from "zod";
 import prisma from "../../../lib/db";
-import { NotificationSchema } from "./notification.client.action";
 
 /** ACTION THAT DOESN'T REQUIRE ADMIN PERMISSION */
 
 export const getAllNotificationsAction = async () => {
   return await prisma.notification.findMany();
+};
+
+export const getUniqueNotificationOrThrow = async (notificationId: string) => {
+  return await prisma.notification.findUniqueOrThrow({
+    where: { id: notificationId },
+  });
 };
 
 export const getCurrentNotificationsAction = async (now: Date) => {
