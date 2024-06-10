@@ -3,6 +3,7 @@ import { PropsWithChildren } from "react";
 import ThemeWrapper from "../theme/ThemeWrapper";
 import { Toaster } from "../ui/toaster";
 import PopupProvider from "./PopupProvider";
+import ServiceWorkerProvider from "./ServiceWorkerProvider";
 
 const Providers = (props: PropsWithChildren) => {
   return (
@@ -14,8 +15,9 @@ const Providers = (props: PropsWithChildren) => {
     >
       <PopupProvider />
       <Toaster />
-
-      <ThemeWrapper>{props.children}</ThemeWrapper>
+      <ServiceWorkerProvider>
+        <ThemeWrapper>{props.children}</ThemeWrapper>
+      </ServiceWorkerProvider>
     </ThemeProvider>
   );
 };

@@ -7,6 +7,7 @@ const manifest = (): MetadataRoute.Manifest => {
     description: "An application built with Next.js",
     theme_color: "#FF0000",
     background_color: "#00FF00",
+    scope: "/",
     start_url: "/",
     display: "standalone",
     orientation: "portrait",
@@ -354,6 +355,12 @@ const manifest = (): MetadataRoute.Manifest => {
       {
         src: "android/android-launchericon-48-48.png",
         sizes: "48x48",
+      },
+      {
+        src: "android/android-launchericon-48-48.png",
+        sizes: "48x48",
+        type: "image/png",
+        purpose: "maskable",
       },
       {
         src: "ios/16.png",

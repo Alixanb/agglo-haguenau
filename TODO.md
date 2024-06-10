@@ -24,10 +24,10 @@ Update des notifications
 
 ### PWA & TWA :
 
-Mettre en cache des données (static, etc.)  
+Ressources
 [next-pwa](https://www.npmjs.com/package/next-pwa)  
 [google pwa](https://developers.google.com/codelabs/pwa-in-play?hl=fr#3)
 
 ### Notes
 
-export notifs
+export notifs pour une BDD commune ?
