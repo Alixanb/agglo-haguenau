@@ -5,7 +5,7 @@ import { registerRoute } from "workbox-routing";
 import { StaleWhileRevalidate } from "workbox-strategies";
 
 // Precache files
-precacheAndRoute(self.__WB_MANIFEST);
+precacheAndRoute([]);
 
 // Cache CSS, JS, and other static assets
 registerRoute(

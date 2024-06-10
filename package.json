@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export && prisma generate && workbox injectManifest workbox-config.js",
+    "build": "next build && prisma generate ",
     "start": "next start",
     "lint": "next lint",
     "static": "next build && next export"
