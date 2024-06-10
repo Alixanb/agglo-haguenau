@@ -40,6 +40,7 @@ import {
 } from "@/components/ui/table";
 import { getLocalAdminPassword } from "@/lib/client-utils";
 import { Notification } from "@prisma/client";
+import { useRouter } from "next/navigation";
 import StatusBadge from "./StatusBadge";
 
 export const columns: ColumnDef<Notification>[] = [
@@ -101,6 +102,14 @@ export const columns: ColumnDef<Notification>[] = [
             </Button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
+            <DropdownMenuItemLink
+              redirect={`/dashboard/${notification.id}`}
+              label="Voir"
+            />
+            <DropdownMenuItemLink
+              redirect={`/dashboard/${notification.id}/edit`}
+              label="Modifier"
+            />
             <DropdownMenuItem
               onClick={() => {
                 deleteNotificationAction(
@@ -112,7 +121,6 @@ export const columns: ColumnDef<Notification>[] = [
             >
               Supprimer
             </DropdownMenuItem>
-            <DropdownMenuItem onClick={() => {}}>Modifier</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -243,3 +251,23 @@ export function NotificationDataTable({ data }: { data: Notification[] | [] }) {
     </div>
   );
 }
+
+const DropdownMenuItemLink = ({
+  redirect,
+  label,
+}: {
+  redirect: string;
+  label: string;
+}) => {
+  const router = useRouter();
+
+  return (
+    <DropdownMenuItem
+      onClick={() => {
+        router.push(redirect);
+      }}
+    >
+      {label}
+    </DropdownMenuItem>
+  );
+};
