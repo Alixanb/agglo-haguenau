@@ -12,7 +12,7 @@ const statusVariants = {
     className: "bg-green-500/30 border-green-500/40",
     label: "En ligne",
   },
-  PASSED: { className: "bg-red-500/30 border-red-500/40", label: "Passé" },
+  PASSED: { className: "bg-red-500/30 border-red-500/40", label: "Passée" },
 };
 
 const StatusBadge: React.FC<StatusBadgeProps> = ({

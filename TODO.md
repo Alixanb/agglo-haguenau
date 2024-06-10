@@ -2,7 +2,8 @@
 
 Notifications Push
 Affichage : 0 pas voulu, faire les tests et
-Styling du READ alertes
+Pouvoir mettre une notif qui commence ajd, et verificer que dateFrom < dateTo
+Status badges dans le voir alerte
 
 ### Agenda:
 
