@@ -24,7 +24,9 @@ interface NotificationDrawerContentProps
   isFirst?: boolean;
 }
 
-const NotificationDrawerContent: React.FC<NotificationDrawerContentProps> = ({
+export const NotificationDrawerContent: React.FC<
+  NotificationDrawerContentProps
+> = ({
   notification,
   isLast = false,
   isFirst = false,
