@@ -27,8 +27,8 @@ const LayoutPage = (props: LayoutParams<{}>) => {
     }
   };
 
-  const [returnObject, setReturnObject] = useState<React.ReactNode>(
-    <AuthForm onSubmit={handleAuthSubmit} />
+  const [returnObject, setReturnObject] = useState<React.ReactNode | null>(
+    null
   );
 
   useEffect(() => {
@@ -52,11 +52,14 @@ const LayoutPage = (props: LayoutParams<{}>) => {
 
     const getReturnObject = async () => {
       if (!password) {
+        setReturnObject(<AuthForm onSubmit={handleAuthSubmit} />);
         return;
       }
 
       if (await checkPasswordValidity(password)) {
         setReturnObject(<>{props.children}</>);
+      } else {
+        setReturnObject(<AuthForm onSubmit={handleAuthSubmit} />);
       }
     };
 
@@ -66,7 +69,7 @@ const LayoutPage = (props: LayoutParams<{}>) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [password]);
 
-  if (isLoading) {
+  if (isLoading || !returnObject) {
     return (
       <div className="w-screen h-screen flex justify-center flex-col items-center">
         <DotLoader />
