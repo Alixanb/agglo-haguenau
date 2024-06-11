@@ -8,9 +8,9 @@ interface SAHTagProps
 }
 
 const SAHTagVariants = cva("capitalize", {
-  variants: { variant: { spéctacle: "", évenement: "" } },
+  variants: { variant: { spectacle: "", evenement: "" } },
   defaultVariants: {
-    variant: "spéctacle",
+    variant: "spectacle",
   },
 });
 

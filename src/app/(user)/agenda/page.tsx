@@ -26,7 +26,11 @@ const Agenda = () => {
   const [comingProducts, setComingProducts] = useState<Product[] | undefined>(
     undefined
   );
+
+  const [showActualProducts, seShowActualProducts] = useState<boolean>(false);
+
   const now = new Date();
+  const SHOW_NUMBER_NEWS = 3;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -74,7 +78,10 @@ const Agenda = () => {
               <Grid cols="1" size="sm">
                 {actualProducts ? (
                   actualProducts.map((product, i) => {
-                    const tags: string[] = [];
+                    if (i > SHOW_NUMBER_NEWS - 1 && !showActualProducts) {
+                      return;
+                    }
+
                     let src = undefined;
                     product.criteres.map((critere) => {
                       critere.id === 1900421 ? (src = critere.valeur) : null;

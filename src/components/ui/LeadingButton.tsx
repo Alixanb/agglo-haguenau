@@ -84,7 +84,6 @@ interface LeadingButtonProps
 
 /**
  * LeadingButton Component
- *
  * Renders a button with a colored and styled icon.
  *
  * @param className Additional CSS classes for the button element.

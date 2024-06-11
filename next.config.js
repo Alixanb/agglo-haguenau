@@ -1,5 +1,7 @@
 const withPWA = require("next-pwa")({
   dest: "public",
+  register: true,
+  skipWaiting: true,
 });
 
 /** @type {import('next').NextConfig} */
@@ -10,6 +12,10 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "www.haguenau.fr",
+      },
+      {
+        protocol: "https",
+        hostname: "apps.tourisme-alsace.info",
       },
     ],
   },

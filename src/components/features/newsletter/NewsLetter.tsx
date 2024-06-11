@@ -3,7 +3,7 @@ import { H2 } from "@/components/typos";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { LeadingButton } from "@/components/ui/LeadingButton";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, Mail } from "lucide-react";
 import Image from "next/image";
 import newsletterImage from "./newsletter.jpg";
 
@@ -21,10 +21,11 @@ const NewsLetter = () => {
             className="absolute w-full h-full rounded-md"
           />
         </div>
-        <div className="flex w-full max-w-sm items-center space-x-2">
+        <div className="flex w-full items-center space-x-2">
           <Input type="email" placeholder="Email" />
-          <Button type="submit" variant="outline">
-            Subscribe
+          <Button type="submit" variant="outline" className="flex gap-2">
+            <Mail className="size-4" />
+            S&apos;abonner
           </Button>
         </div>
       </SubSection>

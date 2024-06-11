@@ -1,15 +1,15 @@
+"use client";
+
 import NewsLetter from "@/components/features/newsletter/NewsLetter";
 import Sortir from "@/components/features/sortir/SortirBanner";
 import { BannerHeader, Main, Section, SubSection } from "@/components/layout/";
 import { H2 } from "@/components/typos";
-import { Button } from "@/components/ui/button";
 import { LeadingButton } from "@/components/ui/LeadingButton";
 import { ArticleBanner } from "@/components/widgets/Article";
 import { Grid, GridSpan } from "@/components/widgets/Grid";
 import {
   BusFront,
   FileSearch,
-  Globe,
   Library,
   Megaphone,
   Router,
@@ -79,16 +79,11 @@ export default function Home() {
               </GridSpan>
             </Grid>
           </SubSection>
-          <SubSection>
-            <ArticleBanner
-              title="Inscription au marché"
-              src="https://www.haguenau.fr/img/frontOffice/slideAcceuil/1920px_1128px-1711126160_c094c8ad087961b5e0b5.jpg"
-              href="./"
-            />
-            <Button variant="outline" className="gap-2 w-full">
-              <Globe size={16} /> Voir sur le web
-            </Button>
-          </SubSection>
+          <ArticleBanner
+            title="Inscription au marché"
+            src="https://www.haguenau.fr/img/frontOffice/slideAcceuil/1920px_1128px-1711126160_c094c8ad087961b5e0b5.jpg"
+            href="./"
+          />
         </Section>
         <NewsLetter />
         <Sortir />
