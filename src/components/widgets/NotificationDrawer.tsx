@@ -9,7 +9,7 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/drawer";
-import { formatDate } from "@/lib/notification/action";
+import { formatDate } from "@/lib/utils";
 import { Notification } from "@prisma/client";
 import { ArrowLeftIcon, ArrowRightIcon, Globe } from "lucide-react";
 import Link from "next/link";

@@ -14,8 +14,7 @@ import {
 } from "@/components/ui/drawer";
 import { Label } from "@/components/ui/label";
 import { Grid } from "@/components/widgets/Grid";
-import { formatDate } from "@/lib/notification/action";
-import { truncate } from "@/lib/utils";
+import { formatDate, truncate } from "@/lib/utils";
 import { Edit, Globe, Rocket } from "lucide-react";
 import Link from "next/link";
 import { getUniqueNotificationOrThrow } from "../notification.action";

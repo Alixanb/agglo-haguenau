@@ -1,154 +1,88 @@
 "use client";
 
 import { Spinner } from "@/components/core/Loader";
-import { BasicHeader, Main, Section } from "@/components/layout/";
-import { H2 } from "@/components/typos";
-import AgendaCard from "@/components/ui/Agenda";
-import { LeadingButton } from "@/components/ui/LeadingButton";
-import { toast } from "@/components/ui/use-toast";
-import { Grid } from "@/components/widgets/Grid";
-import { Product } from "@/types/entity";
-import { CalendarDays } from "lucide-react";
+import { Main } from "@/components/layout";
+import { H1 } from "@/components/typos";
+import { EventsSchema, EventsType } from "@/lib/types";
 import { useEffect, useState } from "react";
-import {
-  deleteIntersectingProducts,
-  extractActualProductsAction,
-  getProductsAction,
-  getProductsNotDeprecatedAction,
-} from "./products.action";
+import { z } from "zod";
+import CalendarSection from "./CalendarSection";
 
-const Agenda = () => {
-  const [isLoading, setLoading] = useState(true);
-  const [products, setProducts] = useState<Product[] | undefined>(undefined);
-  const [actualProducts, setActualProducts] = useState<Product[] | undefined>(
-    undefined
-  );
-  const [comingProducts, setComingProducts] = useState<Product[] | undefined>(
-    undefined
-  );
+const RootPage = () => {
+  const [eventsData, setEventsData] = useState<EventsType | null>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  const [showActualProducts, seShowActualProducts] = useState<boolean>(false);
+  const fetchAPIEvents = async () => {
+    let storageEvents = sessionStorage.getItem("events");
 
-  const now = new Date();
-  const SHOW_NUMBER_NEWS = 3;
+    if (storageEvents) {
+      const parsedEvents = JSON.parse(storageEvents);
+      try {
+        EventsSchema.parse(parsedEvents);
+
+        setEventsData(parsedEvents);
+        setLoading(false);
+
+        return parsedEvents;
+      } catch (e) {
+        if (e instanceof z.ZodError) {
+          console.error("Invalid data in sessionStorage:", e.errors);
+        } else {
+          console.error("Unexpected error:", e);
+        }
+      }
+    }
+
+    try {
+      // Alors storage "events" et null
+      const fetchedEvents = await fetch("/api/lei")
+        .then((res) => res.json())
+        .then((data) => {
+          EventsSchema.parse(data);
+          sessionStorage.setItem("events", JSON.stringify(data));
+          console.log(data);
+          return data;
+        });
+
+      setEventsData(fetchedEvents);
+      setLoading(false);
+
+      return fetchedEvents;
+    } catch (e) {
+      if (e instanceof z.ZodError) {
+        console.error("Invalid fetched data:", e.errors);
+      } else {
+        console.error("Failed to fetch or validate events data:", e);
+      }
+      throw new Error("Impossibe de récuperer des données sous forme valide: ");
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const data = await getProductsAction();
-
-      if (!data) {
-        toast({
-          title: "Aucun évènement trouvé",
-        });
-        return;
-      }
-
-      setActualProducts(extractActualProductsAction(data, now));
-      setComingProducts(
-        deleteIntersectingProducts(
-          getProductsNotDeprecatedAction(data, now),
-          extractActualProductsAction(data, now)
-        )
-      );
-
-      setProducts(data);
-      setLoading(false);
-    };
-
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    fetchAPIEvents();
   }, []);
+
+  if (loading) {
+    return (
+      <Main active="agenda">
+        <H1>Agenda des évènement</H1>
+        <Spinner className="my-32" />
+      </Main>
+    );
+  }
+
+  if (!eventsData) {
+    throw new Error(
+      "Les données events ne sont pas définies après le pull de la db"
+    );
+  }
 
   return (
     <Main active="agenda">
-      <BasicHeader>
-        <LeadingButton accent="green" size="fit">
-          <CalendarDays />
-        </LeadingButton>
-        Agenda
-      </BasicHeader>
-      {isLoading ? (
-        <Spinner />
-      ) : (
-        products && (
-          <>
-            <Section>
-              <H2>En ce moment</H2>
-              <Grid cols="1" size="sm">
-                {actualProducts ? (
-                  actualProducts.map((product, i) => {
-                    if (i > SHOW_NUMBER_NEWS - 1 && !showActualProducts) {
-                      return;
-                    }
-
-                    let src = undefined;
-                    product.criteres.map((critere) => {
-                      critere.id === 1900421 ? (src = critere.valeur) : null;
-                    });
-
-                    return (
-                      <AgendaCard
-                        key={product.id}
-                        title={product.nom}
-                        date={[product.date_debut, product.date_fin]}
-                        period={[
-                          product.horaires[0].heures[0].heure_debut,
-                          product.horaires[0].heures[0].heure_fin,
-                        ]}
-                        href={
-                          "https://www.haguenau.fr/fr/calendrier-des-evenements/" +
-                          product.id
-                        }
-                        place={product.coordonnees.libelle_commune}
-                        src={src}
-                      />
-                    );
-                  })
-                ) : (
-                  <Spinner />
-                )}
-              </Grid>
-            </Section>
-            <Section>
-              <H2>À venir</H2>
-              <Grid cols="1" size="sm">
-                {comingProducts ? (
-                  comingProducts.map((product, i) => {
-                    const tags: string[] = [];
-                    let src = undefined;
-                    product.criteres.map((critere) => {
-                      critere.id === 1900421 ? (src = critere.valeur) : null;
-                    });
-
-                    return (
-                      <AgendaCard
-                        key={product.id}
-                        title={product.nom}
-                        date={[product.date_debut, product.date_fin]}
-                        period={[
-                          product.horaires[0].heures[0].heure_debut,
-                          product.horaires[0].heures[0].heure_fin,
-                        ]}
-                        href={
-                          "https://www.haguenau.fr/fr/calendrier-des-evenements/" +
-                          product.id
-                        }
-                        place={product.coordonnees.libelle_commune}
-                        src={src}
-                      />
-                    );
-                  })
-                ) : (
-                  <Spinner />
-                )}
-              </Grid>
-            </Section>
-          </>
-        )
-      )}
+      <H1>Agenda des évènement</H1>
+      <CalendarSection event={eventsData} />
     </Main>
   );
 };
 
-export default Agenda;
+export default RootPage;

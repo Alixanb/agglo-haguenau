@@ -1,5 +1,4 @@
-import { formatDate } from "@/lib/notification/action";
-import { cn } from "@/lib/utils";
+import { cn, formatDate } from "@/lib/utils";
 import { Notification as NotificationModel } from "@prisma/client";
 import { ExternalLink } from "lucide-react";
 import Link from "next/link";
