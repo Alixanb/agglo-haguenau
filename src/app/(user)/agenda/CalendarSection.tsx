@@ -181,6 +181,12 @@ const Cell: React.FC<CellProps> = ({
 }) => {
   const cellRef = useRef<HTMLDivElement>(null);
 
+  const now = new Date();
+  const isToday =
+    date.getDate() === now.getDate() &&
+    date.getMonth() === now.getMonth() &&
+    date.getFullYear() === now.getFullYear();
+
   if (products) products = orderProducts(products);
 
   // On regarde si la cell est d'un mois different, car si oui on la met en gris claire
@@ -201,7 +207,12 @@ const Cell: React.FC<CellProps> = ({
   return (
     <div
       ref={cellRef}
-      className=" overflow-x-visible z-10 border-t border-t-border w-full text-slate-600 focus:bg-slate-100 focus:outline outline-offset-2 rounded"
+      className={cn(
+        " overflow-x-visible z-10 border-t border-t-border w-full text-slate-600 focus:bg-slate-100 focus:outline outline-offset-2 rounded",
+        isToday
+          ? "focus:outline-offset-2 outline outline-blue-500 outline-2 outline-offset-0 bg-blue-50  border-blue-500 text-blue-500"
+          : null
+      )}
       onClick={handleClick}
       tabIndex={0}
       {...props}
@@ -322,7 +333,7 @@ const CellEvent: React.FC<CellEventProps> = ({ product, date, ...props }) => {
 
 const CellDetail: React.FC<CellDetailProps> = ({ data, ...props }) => {
   if (!data?.date) {
-    return;
+    data.date = new Date();
   }
 
   return (
