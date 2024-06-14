@@ -48,3 +48,14 @@ export const mois = [
 ];
 
 export const jours = ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"];
+
+/**
+ * Clamps a number to be within the inclusive range specified by min and max.
+ *
+ * @param val - The number to clamp.
+ * @param min - The lower boundary of the output range.
+ * @param max - The upper boundary of the output range.
+ * @returns The clamped value, guaranteed to be between min and max.
+ */
+export const clamp = (val: number, min: number, max: number) =>
+  Math.min(Math.max(val, min), max);

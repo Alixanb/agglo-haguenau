@@ -2,7 +2,6 @@
 
 import { Spinner } from "@/components/core/Loader";
 import { Main } from "@/components/layout";
-import { H1 } from "@/components/typos";
 import { EventsSchema, EventsType } from "@/lib/types";
 import { useEffect, useState } from "react";
 import { z } from "zod";
@@ -62,16 +61,7 @@ const RootPage = () => {
     fetchAPIEvents();
   }, []);
 
-  if (loading) {
-    return (
-      <Main active="agenda">
-        <H1>Agenda des évènement</H1>
-        <Spinner className="my-32" />
-      </Main>
-    );
-  }
-
-  if (!eventsData) {
+  if (!loading && !eventsData) {
     throw new Error(
       "Les données events ne sont pas définies après le pull de la db"
     );
@@ -79,8 +69,11 @@ const RootPage = () => {
 
   return (
     <Main active="agenda">
-      <H1>Agenda des évènement</H1>
-      <CalendarSection event={eventsData} />
+      {loading ? (
+        <Spinner className="my-32" />
+      ) : (
+        <CalendarSection event={eventsData} />
+      )}
     </Main>
   );
 };
