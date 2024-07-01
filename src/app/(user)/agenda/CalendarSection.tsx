@@ -22,6 +22,7 @@ import {
   getDateArrayBetweenTwoDate,
   getInclusiveStartAndEndOfMonth,
   IS_LONG_EVENT_THRESHOLD,
+  isSameDay,
   isTimeSpanLongerThan,
   OrderedProduct,
   orderProducts,
@@ -101,7 +102,7 @@ const CalendarSection: React.FC<CalendarSectionProps> = ({ event }) => {
 
   const pushAgendaCache = (newCache: AgendaCacheProps | null = null) => {
     if (newCache) setCache(newCache);
-    sessionStorage.setItem("agenda_cache", JSON.stringify(newCache));
+    sessionStorage.setItem("agenda_cache", JSON.stringify(cache));
   };
 
   const changeMonthIndex = (change: number) => {
@@ -110,7 +111,9 @@ const CalendarSection: React.FC<CalendarSectionProps> = ({ event }) => {
     pushAgendaCache({ ...cache, date: newDate.toISOString() });
   };
 
+  
   const productsFetched = orderProductsByDate(event.products);
+  console.log(productsFetched)
 
   const limitDate = getInclusiveStartAndEndOfMonth(
     cacheDate.getFullYear(),
@@ -152,7 +155,7 @@ const CalendarSection: React.FC<CalendarSectionProps> = ({ event }) => {
           <span>SAM.</span>
           <span className="text-red-500">DIM.</span>
         </div>
-        <div className="grid grid-cols-7 grid-rows-1fr grow shrink-0 h-[calc(80vh_-_100px)]">
+        <div className="grid grid-cols-7 grid-rows-1fr grow shrink-0 h-[calc(80vh_-_100px)] auto-rows-[1fr]">
           {dates.map((date, i) => {
             const localProduct = extendsPreviousEvents(date, productsFetched);
             return (
@@ -194,7 +197,6 @@ const Cell: React.FC<CellProps> = ({
   const isSunday = date.getDay() === 0;
 
   const handleClick = () => {
-    console.log(products);
     onClick(date, products);
     cellRef.current?.focus();
   };
@@ -364,9 +366,8 @@ const CellDetail: React.FC<CellDetailProps> = ({ data, ...props }) => {
                     <div className="flex flex-col">
                       <div>{truncate(product.name, 30)}</div>
                       <Small className="font-normal">
-                        {formatDate(product.start) +
-                          " au " +
-                          formatDate(product.end)}
+                        {!isSameDay(product.start, product.end) ?
+                        `${formatDate(product.start)} au  ${formatDate(product.end)}` : formatDate(product.start)}
                       </Small>
                     </div>
                   </div>

@@ -81,74 +81,116 @@ export interface ProductsOrderedInterface {
       }
     | undefined;
 }
+
 export function orderProductsByDate(products: EventsProductType[]) {
+  const fakeEvent: OrderedProduct = {
+    name: "Evenement de test",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris vitae nunc feugiat, efficitur lectus nec, venenatis leo. Pellentesque varius, augue ac feugiat sagittis, urna mi ullamcorper nulla, nec sagittis mi tellus vel nibh. Fusce quis vehicula nisl. Donec ac lorem ut risus tincidunt placerat. Etiam pulvinar sollicitudin odio, in fringilla felis eleifend non. Sed risus lorem, tincidunt non euismod sit amet, dapibus eu urna. Praesent tempus est in augue sodales tincidunt. Nunc vel augue vitae neque aliquet pellentesque. Etiam faucibus ultricies efficitur. Vivamus consequat eget libero feugiat faucibus. Sed malesuada lorem non mi blandit, ac hendrerit metus vulputate. In imperdiet, felis vitae condimentum lobortis, tortor orci gravida odio, vitae vehicula lorem dolor eu sapien. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Morbi elit lorem, venenatis et interdum ac, accumsan vitae elit. Nulla facilisi.",
+    start: new Date(),
+    end: new Date(),
+    image: undefined,
+    daysLength: 0,
+    originalLength: 0,
+  };
+
   let productsOrdered: ProductsOrderedInterface = {};
+
+  productsOrdered[new Date().toISOString()] = { products: [] };
+
+  productsOrdered[new Date().toISOString()]?.products.push(fakeEvent);
+  console.log(productsOrdered);
+  return productsOrdered;
+  // Nombre de jour minimum à partir duquel on considere que l'evenement est trop long et est un evenement constant
+  const MINIMUM_TIME_FOR_EVENT = 5 * 30;
 
   products.forEach((product, i) => {
     const start = stringToDate(product.date_debut);
     const end = stringToDate(product.date_fin);
     const daysLength = getTimeSpanBetweenTwoDateInDays(start, end);
 
-    const newProduct: OrderedProduct = {
-      name: product.nom,
-      description: product.commentaire,
-      start: start,
-      end: end,
-      image: product.criteres.find((el) => el.id === 1900421)?.valeur,
-      daysLength: daysLength,
-      originalLength: daysLength,
-    };
+    // const newProduct: OrderedProduct = {
+    //   name: product.nom,
+    //   description: product.commentaire,
+    //   start: start,
+    //   end: end,
+    //   image: product.criteres.find((el) => el.id === 1900421)?.valeur,
+    //   daysLength: daysLength,
+    //   originalLength: daysLength,
+    // };
     const productDate = stringToDate(product.date_debut);
     const productDateKey = productDate.toISOString();
 
-    if (daysLength > 7) {
-      // So la durée de l'evenement est superieur à 5 mois, alors on le met dans "toute l'année"
-      if (daysLength >= 5 * 30) {
-        // Insert dans les evenemnts qui sont toute l'année
-      } else {
-        let timeSpan = daysLength;
-        let dateKey = productDate;
-        let i = 0;
-
-        do {
-          timeSpan -= 7;
-          const delayedProduct: OrderedProduct = {
-            name: product.nom,
-            description: product.commentaire,
-            start: start,
-            end: end,
-            image: product.criteres.find((el) => el.id === 1900421)?.valeur,
-            daysLength: timeSpan,
-            originalLength: daysLength,
-          };
-
-          if (dateKey.getDay() !== 1 && i >= 0) {
-            dateKey.setDate(
-              dateKey.getDate() + ((1 + 7 - dateKey.getDay()) % 7)
-            );
-          } else {
-            dateKey.setDate(dateKey.getDate() + 7);
-          }
-
-          if (!productsOrdered[dateKey.toISOString()]?.products) {
-            productsOrdered[dateKey.toISOString()] = {
-              products: [],
-            };
-          }
-
-          productsOrdered[dateKey.toISOString()]?.products.push(delayedProduct);
-          i++;
-        } while (timeSpan > 7);
-      }
+    if (daysLength >= MINIMUM_TIME_FOR_EVENT) {
+      // Action pour les évenements longs
+      return;
     }
 
-    if (!productsOrdered[productDateKey]) {
-      productsOrdered[productDateKey] = {
-        products: [],
+    let datePointer = new Date(start);
+    do {
+      const newProduct: OrderedProduct = {
+        name: product.nom,
+        description: product.commentaire,
+        start: start,
+        end: end,
+        image: product.criteres.find((el) => el.id === 1900421)?.valeur,
+        daysLength: daysLength,
+        originalLength: daysLength,
       };
-    }
+      productsOrdered[datePointer.toISOString()]?.products.push(newProduct);
 
-    productsOrdered[productDateKey].products.push(newProduct);
+      // Increment du pointer
+      datePointer.setDate(datePointer.getDate() + 1);
+    } while (datePointer <= end);
+
+    // if (daysLength > 7) {
+    //   // Si la durée de l'evenement est superieur à 5 mois, alors on le met dans "toute l'année"
+    //   if (daysLength >= 5 * 30) {
+    //     // Insert dans les evenements qui sont toute l'année
+    //   } else {
+    //     let timeSpan = daysLength;
+    //     let dateKey = productDate;
+    //     let i = 0;
+
+    //     do {
+    //       timeSpan -= 7;
+    //       const delayedProduct: OrderedProduct = {
+    //         name: product.nom,
+    //         description: product.commentaire,
+    //         start: start,
+    //         end: end,
+    //         image: product.criteres.find((el) => el.id === 1900421)?.valeur,
+    //         daysLength: timeSpan,
+    //         originalLength: daysLength,
+    //       };
+
+    //       if (dateKey.getDay() !== 1 && i >= 0) {
+    //         dateKey.setDate(
+    //           dateKey.getDate() + ((1 + 7 - dateKey.getDay()) % 7)
+    //         );
+    //       } else {
+    //         dateKey.setDate(dateKey.getDate() + 7);
+    //       }
+
+    //       if (!productsOrdered[dateKey.toISOString()]?.products) {
+    //         productsOrdered[dateKey.toISOString()] = {
+    //           products: [],
+    //         };
+    //       }
+
+    //       productsOrdered[dateKey.toISOString()]?.products.push(delayedProduct);
+    //       i++;
+    //     } while (timeSpan > 7);
+    //   }
+    // }
+
+    // if (!productsOrdered[productDateKey]) {
+    //   productsOrdered[productDateKey] = {
+    //     products: [],
+    //   };
+    // }
+
+    // productsOrdered[productDateKey].products.push(newProduct);
 
     // Calculate days length and assign to the corresponding day
   });

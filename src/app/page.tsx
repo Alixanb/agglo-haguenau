@@ -29,12 +29,7 @@ export default function Home() {
           <H2>Accès rapides</H2>
           <SubSection>
             <Grid size="sm">
-              <GridSpan>
-                <LeadingButton link="out" accent="blue">
-                  <Router />
-                  Mes services en ligne
-                </LeadingButton>
-              </GridSpan>
+              
               <LeadingButton accent="orange">
                 <TrafficCone />
                 Info travaux
@@ -51,12 +46,6 @@ export default function Home() {
                 <BusFront />
                 RITMO
               </LeadingButton>
-              <GridSpan>
-                <LeadingButton link="out" accent="red">
-                  <TriangleAlert />
-                  Créer un signalement
-                </LeadingButton>
-              </GridSpan>
               <LeadingButton accent="yellow">
                 <Megaphone />
                 Alertes
@@ -65,6 +54,18 @@ export default function Home() {
                 <Users />
                 Espace Famille
               </LeadingButton>
+              <GridSpan>
+                <LeadingButton link="out" accent="blue">
+                  <Router />
+                  Mes services en ligne
+                </LeadingButton>
+              </GridSpan>
+              <GridSpan>
+                <LeadingButton link="out" accent="red">
+                  <TriangleAlert />
+                  Créer un signalement
+                </LeadingButton>
+              </GridSpan>
               <GridSpan>
                 <LeadingButton link="out" accent="sky">
                   <Library />

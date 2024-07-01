@@ -41,7 +41,7 @@ const NotificationWidget: React.FC<NotificationProps> = ({
           </div>
           <div>
             <P variant="medium">{notification.title}</P>
-            <Small className="truncate">{`Jusuqu'au ${formatDate(
+            <Small className="truncate">{`Jusqu'au ${formatDate(
               dateTo
             )}`}</Small>
           </div>
